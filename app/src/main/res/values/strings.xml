@@ -1,0 +1,11 @@
+<!-- Corine Jacobs
+     10001326
+     Corine_J@MSN.com
+     Minor Programmeren 2015/2016 - Universiteit van Amsterdam -->
+
+<resources>
+    <string name="app_name">Ghost</string>
+
+    <string name="hello_world">Test test test!</string>
+    <string name="action_settings">Settings</string>
+</resources>
