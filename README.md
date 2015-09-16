@@ -5,7 +5,7 @@ Corine Jacobs
 Corine_J [at] MSN [dot] com   
 
 ### Summary of the project
-Ghost is a wordgame that is played by two players. The players form a word by alternating turns saying a letter, which is added on the end of the word fragment. A player loses when he/she forms a word longer than 3 letters or creates a fragment which cannot become a wordt by adding more letters.
+Ghost is a wordgame that is played by two players. The players form a word by alternating turns saying a letter, which is added on the end of the word fragment. A player loses when he/she forms a word longer than 3 letters or creates a fragment which cannot become a word by adding more letters.
    
 *(Ghost will be a native app for Android. Min. SDK: API 19, Android 4.4 (KitKat))*
 
