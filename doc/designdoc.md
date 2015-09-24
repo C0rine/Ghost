@@ -57,8 +57,15 @@ Cases in which the system will fail or will stop processing before going through
 
 ### Consolidated sketches of each screen  
 
+Overview:  
 ![ConsolidatedSketches](ConsolidatedSketches.jpg)  
 
-
-
-
+And as separate png's:  
+![Sketch1](Sketch1.png)
+![Sketch2](Sketch2.png)
+![Sketch3](Sketch3.png)
+![Sketch4](Sketch4.png)
+![Sketch5](Sketch5.png)
+![Sketch6](Sketch6.png)
+![Sketch7](Sketch7.png)
+![Sketch8](Sketch8.png)
