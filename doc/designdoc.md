@@ -51,17 +51,13 @@ Cases in which the system will fail or will stop processing before going through
 12.	Updated Highscore list is saved
 13.	User gets the option to play another game  
 
-### Activity Diagrams  
-
-To do  
-
 ### Class Diagrams  
 
 ![ObjectModel](ObjectModel.png)
 
 ### Consolidated sketches of each screen  
 
-To do
+![ConsolidatedSketches](ConsolidatedSketches.jpg)  
 
 
 
