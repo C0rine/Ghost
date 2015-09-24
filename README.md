@@ -11,6 +11,7 @@ Ghost is a wordgame that is played by two players. The players form a word by al
 
 ### Features
 - Write a custom username or pick a previously used one.
+- Pick a player avatar from a library.
 - Pick between Dutch or English dictionaries for the game.
 - Guess a letter via an on-screen keyboard.
 - Get notifications when you win/lose.
@@ -19,4 +20,7 @@ Ghost is a wordgame that is played by two players. The players form a word by al
 - Game state and preferences survive even when the app gets closed.
 
 ### Sketches of user experience
-ToDo
+##### All activities  
+![AllActivities](/doc/AllActivities.jpg)
+##### Paths  
+![Paths](/doc/Paths.jpg)
