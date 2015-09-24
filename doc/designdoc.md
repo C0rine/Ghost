@@ -57,7 +57,7 @@ To do
 
 ### Class Diagrams  
 
-To do  
+![ObjectModel](ObjectModel.png)
 
 ### Consolidated sketches of each screen  
 
