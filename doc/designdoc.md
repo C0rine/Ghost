@@ -57,8 +57,15 @@ Cases in which the system will fail or will stop processing before going through
 
 ### Consolidated sketches of each screen  
 
+Overview:  
 ![ConsolidatedSketches](ConsolidatedSketches.jpg)  
 
-
-
-
+And as separate png's with name of controller:  
+![Sketch1](sketch1.png)
+![Sketch2](sketch2.png)
+![Sketch3](sketch3.png)
+![Sketch4](sketch4.png)
+![Sketch5](sketch5.png)
+![Sketch6](sketch6.png)
+![Sketch7](sketch7.png)
+![Sketch8](sketch8.png)
