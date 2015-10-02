@@ -1,0 +1,214 @@
+<!-- Corine Jacobs
+     10001326
+     Corine_J@MSN.com
+     Minor Programmeren 2015/2016 - Universiteit van Amsterdam -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="nl.mprog.ghost.GhostSettings"
+    android:orientation="vertical"
+    android:background="@mipmap/other_bg"
+    android:weightSum="1">
+
+
+    <TextView
+        android:id="@+id/settings_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/settings_text"
+        android:shadowColor="#ffffff"
+        android:shadowRadius="25"
+        android:textSize="30sp"/>
+
+    <ScrollView
+        android:id="@+id/settings_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height=""
+        android:layout_weight="1"
+        android:layout_marginBottom="10dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="#000000"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/languagepref_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Language preference"
+                    android:textColor="#ffffff"
+                    android:textSize="25sp" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_horizontal"
+                    android:layout_below="@id/languagepref_text">
+
+                    <RadioButton
+                        android:id="@+id/languagepref_nl_radiobutton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/flag_nl_text"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/languagepref_en_radiobutton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/flag_en_text"
+                        />
+                </RadioGroup>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="#000000"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/dictionarypref_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Dictionary preference"
+                    android:textColor="#ffffff"
+                    android:textSize="25sp" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_horizontal"
+                    android:layout_below="@id/dictionarypref_text">
+
+                    <RadioButton
+                        android:id="@+id/dictionarypref_nl_radiobutton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/flag_nl_text"
+                         />
+
+                    <RadioButton
+                        android:id="@+id/dictionarypref_en_radiobutton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/flag_en_text"
+                        />
+
+                </RadioGroup>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#000000"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/player1_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/player1_text"
+                    android:textSize="25sp"
+                    android:textColor="#ffffff" />
+
+                <EditText
+                    android:id="@+id/player1_name_edittext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/player1_text"/>
+
+                <Button
+                    android:id="@+id/player1_namechange_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/namechange_button"
+                    android:layout_below="@id/player1_text"
+                    android:layout_toRightOf="@id/player1_name_edittext"
+                    android:textSize="15sp"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#000000"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/player2_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/player2_text"
+                    android:textSize="25sp"
+                    android:textColor="#ffffff" />
+
+                <EditText
+                    android:id="@+id/player2_name_edittext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/player2_text"/>
+
+                <Button
+                    android:id="@+id/player2_namechange_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/namechange_button"
+                    android:textSize="15sp"
+                    android:layout_below="@id/player2_text"
+                    android:layout_toRightOf="@id/player2_name_edittext"/>
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/instructions_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/instructions_button"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"/>
+        </LinearLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/back_button"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp" />
+
+</LinearLayout>
