@@ -5,6 +5,7 @@
 
 package nl.mprog.ghost;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -33,7 +34,15 @@ public class GhostInstructions extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+
+        // open settings
+        if (id == R.id.settings) {
+            Intent openSettings = new Intent(this, GhostSettings.class);
+            startActivityForResult(openSettings, 1);
+        }
+        // close app
+        else if (id == R.id.exit){
+            System.exit(0);
             return true;
         }
 

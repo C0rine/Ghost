@@ -1,6 +1,21 @@
+<!-- Corine Jacobs
+     10001326
+     Corine_J@MSN.com
+     Minor Programmeren 2015/2016 - Universiteit van Amsterdam -->
+
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" tools:context=".GhostMainActivity">
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-        android:orderInCategory="100" app:showAsAction="never" />
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".GhostMainActivity">
+
+    <item android:id="@+id/settings"
+        android:title="@string/action_settings"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/exit"
+        android:title="@string/exit_text"
+        android:orderInCategory="101"
+        app:showAsAction="never" />
+
 </menu>

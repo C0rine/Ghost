@@ -5,10 +5,12 @@
 
 package nl.mprog.ghost;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class GhostSettings extends AppCompatActivity {
 
@@ -33,10 +35,24 @@ public class GhostSettings extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+
+        // close app
+        if (id == R.id.exit){
+            System.exit(0);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    public void goBack(View view) {
+        onBackPressed();
     }
 }
