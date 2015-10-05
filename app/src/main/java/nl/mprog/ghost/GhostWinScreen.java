@@ -5,10 +5,13 @@
 
 package nl.mprog.ghost;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 public class GhostWinScreen extends AppCompatActivity {
 
@@ -38,5 +41,24 @@ public class GhostWinScreen extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    // after finishing playing a game, open highscores in new activity
+    public void continueToHighscore(View view) {
+
+        Intent continueToHighscores = new Intent (this, GhostHighscores.class);
+
+        startActivityForResult(continueToHighscores, 1);
+
+    }
+
+    // Restrict users from using back button. We always want them to go to the highscores first
+    // and not let them go back into the gamemode or bypass having their score inserted into the
+    // highscoreslist.
+    public void onBackPressed(){
+
+        Toast.makeText(this, R.string.noreturnallowed_toasttext,
+                Toast.LENGTH_LONG).show();
+
     }
 }

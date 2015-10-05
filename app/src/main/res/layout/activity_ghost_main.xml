@@ -49,6 +49,7 @@
 
             <Button
                 android:id="@+id/newgame_button"
+                android:onClick="newGameStart"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/newgame_buttontext"
@@ -58,6 +59,7 @@
 
             <Button
                 android:id="@+id/highscores_button"
+                android:onClick="viewHighscores"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/highscores_buttontext"

@@ -5,10 +5,13 @@
 
 package nl.mprog.ghost;
 
+import android.app.DialogFragment;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class GhostInGame extends AppCompatActivity {
 
@@ -38,5 +41,24 @@ public class GhostInGame extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    // When a user is in game and presses back the running game will be canceled
+    // before that happens though the user gets asked to confirm this in a dialogbox.
+    public void onBackPressed(){
+
+        DialogFragment exitGameDialog = new ExitGameWarningDialog();
+
+        exitGameDialog.show(getFragmentManager(), "warning");
+
+    }
+
+    // for debugging purposes. clicking on ghost image will take you immediately to winscreen
+    public void debugBackdoor(View view) {
+
+        Intent debugWin = new Intent(this, GhostWinScreen.class);
+
+        startActivityForResult(debugWin, 1);
+
     }
 }

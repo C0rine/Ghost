@@ -42,5 +42,11 @@
     <string name="latin_placeholder_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in nisl consequat, sodales nisi in, accumsan neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ullamcorper tempus enim. Nunc eleifend leo vitae arcu posuere bibendum. Cras pretium ex mi, et finibus diam dapibus eleifend. Aenean varius vestibulum malesuada. Cras maximus, eros vehicula lobortis tristique, enim lectus condimentum lectus, vitae feugiat eros velit sit amet augue. Donec volutpat ante eu metus mollis interdum. Curabitur dignissim justo ultrices felis molestie accumsan. Nunc porttitor et dolor a hendrerit.
                                             In ut tincidunt leo. Praesent vitae tempus justo. Mauris feugiat dui sed leo feugiat, et volutpat nibh ornare. Aliquam tincidunt in odio ac viverra. Praesent libero purus, iaculis id turpis vel, suscipit auctor purus. Cras orci magna, ornare ac metus nec, vestibulum aliquet arcu. Donec ultrices eu nisi non tristique. Etiam mattis vestibulum mi, ac dapibus erat pellentesque sit amet. Curabitur metus diam, laoreet quis cursus id, rhoncus eu sapien. Nulla luctus convallis consectetur. Sed vel leo nec velit aliquet tincidunt.
                                             </string>
+    <string name="noreturnallowed_toasttext">You cannot use this button here. Please continue to highscores first.</string>
+    <string name="dialog_areyousure_titletext">Are you sure?</string>
+    <string name="dialogmessage_gamewillbelost_text">Going back might cause the game state to be lost</string>
+    <string name="positivedialog_buttontext">I\'m Sure</string>
+    <string name="cancelbutton_text">Cancel</string>
+    <string name="cancelled_text">Cancelled</string>
 
 </resources>

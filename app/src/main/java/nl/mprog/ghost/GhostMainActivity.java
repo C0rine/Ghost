@@ -5,10 +5,12 @@
 
 package nl.mprog.ghost;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class GhostMainActivity extends AppCompatActivity {
 
@@ -38,5 +40,22 @@ public class GhostMainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    // start a new game in a new activity (starting with userinput)
+    public void newGameStart(View view) {
+
+        Intent newGameStart = new Intent(this, GhostPlayerInput.class);
+
+        startActivityForResult(newGameStart, 1);
+
+    }
+
+    // view highscores in a new activity
+    public void viewHighscores(View view) {
+
+        Intent viewHighscores = new Intent(this, GhostHighscores.class);
+
+        startActivityForResult(viewHighscores, 1);
     }
 }

@@ -30,10 +30,9 @@
     <ScrollView
         android:id="@+id/settings_scrollview"
         android:layout_width="match_parent"
-        android:layout_height=""
         android:layout_weight="1"
         android:layout_marginBottom="10dp">
-
+,
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"

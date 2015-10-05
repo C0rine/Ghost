@@ -5,10 +5,12 @@
 
 package nl.mprog.ghost;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class GhostPlayerInput extends AppCompatActivity {
 
@@ -38,5 +40,14 @@ public class GhostPlayerInput extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    // after completing userinput open new activity to actually start playing the game
+    public void startPlaying(View view) {
+
+        Intent startPlaying = new Intent(this, GhostInGame.class);
+
+        startActivityForResult(startPlaying, 1);
+
     }
 }
