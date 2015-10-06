@@ -35,16 +35,7 @@ public class GhostInstructions extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
 
-        // open settings
-        if (id == R.id.settings) {
-            Intent openSettings = new Intent(this, GhostSettings.class);
-            startActivityForResult(openSettings, 1);
-        }
-        // close app
-        else if (id == R.id.exit){
-            System.exit(0);
-            return true;
-        }
+        // Gets inherited from BaseActivity
 
         return super.onOptionsItemSelected(item);
     }

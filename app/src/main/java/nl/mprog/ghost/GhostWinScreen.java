@@ -13,7 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-public class GhostWinScreen extends AppCompatActivity {
+public class GhostWinScreen extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,20 +33,8 @@ public class GhostWinScreen extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-
-        // open settings
-        if (id == R.id.settings) {
-            Intent openSettings = new Intent(this, GhostSettings.class);
-            startActivityForResult(openSettings, 1);
-        }
-        // close app
-        else if (id == R.id.exit){
-            System.exit(0);
-            return true;
-        }
+        // Gets inherited from BaseActivity
 
         return super.onOptionsItemSelected(item);
     }

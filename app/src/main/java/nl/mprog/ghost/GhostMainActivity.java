@@ -13,7 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-public class GhostMainActivity extends AppCompatActivity {
+public class GhostMainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,16 +37,7 @@ public class GhostMainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
 
-        // open settings
-        if (id == R.id.settings) {
-            Intent openSettings = new Intent(this, GhostSettings.class);
-            startActivityForResult(openSettings, 1);
-        }
-        // close app
-        else if (id == R.id.exit){
-            System.exit(0);
-            return true;
-        }
+        // Gets inherited from BaseActivity
 
         return super.onOptionsItemSelected(item);
     }

@@ -3,7 +3,6 @@
 // Corine_J@MSN.com
 // Minor Programmeren 2015/2016 - Universiteit van Amsterdam
 
-
 package nl.mprog.ghost;
 
 import android.content.Intent;
@@ -11,21 +10,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
-public class GhostHighscores extends BaseActivity {
+
+// Base activity contains all information that needs to be the same
+// across (almost) all activities (e.g. the actionbarmenu).
+
+public class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ghost_highscores);
+        setContentView(R.layout.activity_base);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_ghost_highscores, menu);
+        getMenuInflater().inflate(R.menu.menu_base, menu);
         return true;
     }
 
@@ -38,33 +39,21 @@ public class GhostHighscores extends BaseActivity {
 
         //noinspection SimplifiableIfStatement
 
-        // gets inherited from baseactivity
+        // open settings
+        if (id == R.id.settings) {
+            Intent openSettings = new Intent(this, GhostSettings.class);
+            startActivityForResult(openSettings, 1);
+        }
+        // close app
+        else if (id == R.id.exit){
+            // exit the application
+            Intent exiting = new Intent(Intent.ACTION_MAIN);
+            exiting.addCategory(Intent.CATEGORY_HOME);
+            exiting.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(exiting);
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    // start new game in new activity starting again with user input
-    public void newGameStart(View view) {
-
-        Intent newGameStart = new Intent(this, GhostPlayerInput.class);
-
-        startActivityForResult(newGameStart, 1);
-
-    }
-
-    // go back to MainActivty
-    public void backToHome(View view) {
-
-        Intent backToHome = new Intent(this, GhostMainActivity.class);
-
-        startActivityForResult(backToHome, 1);
-    }
-
-    // when user presses android back button make game restart
-    @Override
-    public void onBackPressed() {
-        Intent backToHome = new Intent(this, GhostMainActivity.class);
-
-        startActivityForResult(backToHome, 1);
     }
 }

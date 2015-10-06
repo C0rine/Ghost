@@ -12,6 +12,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+// Does not inherit from BaseActivity since the actionbar in this activity
+// does not need to contain a menuitem to go to the settings.
 public class GhostSettings extends AppCompatActivity {
 
     @Override
@@ -36,9 +38,9 @@ public class GhostSettings extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
 
-        // close app
+        // close settings activity (not the whole app)
         if (id == R.id.exit){
-            System.exit(0);
+            finish();
             return true;
         }
 
