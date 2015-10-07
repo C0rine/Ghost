@@ -63,9 +63,19 @@ public class GhostInGame extends BaseActivity {
     }
 
     public void lexiconCheck(View view) {
-        String prefix = "aai";
-        //getText(findViewById(R.id.add_letter_button);
+        String prefix = "aaitjes";
         Lexicon lexicon = new Lexicon(this, "dutch");
-        lexicon.filter("aai");
+        lexicon.filter(prefix);
+        String count = Integer.toString(lexicon.count());
+        String lastword = lexicon.result();
+        Toast.makeText(this, lastword + count, Toast.LENGTH_SHORT).show();
+
+        lexicon.reset();
+
+        prefix = "olieboorders";
+        lexicon.filter(prefix);
+        count = Integer.toString(lexicon.count());
+        lastword = lexicon.result();
+        Toast.makeText(this, lastword + count, Toast.LENGTH_SHORT).show();
     }
 }

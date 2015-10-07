@@ -27,6 +27,7 @@ public class Lexicon{
 
     HashSet<String> fulldict;
     HashSet<String> filtereddict;
+    int count = 0;
 
 
     // lexicon constructor, constructs both a fulldict and a copy of it that can/will be filtered later
@@ -91,25 +92,36 @@ public class Lexicon{
         Log.d("READ", "Done filtering: " + filtereddict.toString());
     }
 
-    /*
 
+    // returns amount of items left in the hashset filtereddict
     public int count(){
-        // return the amount of words left in the (filtered) list
-        int count;
-
+        count = filtereddict.size();
+        Log.d("READ", "# words in filtered left: " + Integer.toString(count));
         return count;
     }
 
+
+    // returns the last word in the filtered dict
     public String result(){
-        // return the last remaining word in the list if count == 0
-        String lastword;
 
-        return lastword;
+        String lastword = "";
+
+        // error checking if there really is only one word left
+        if (count == 1) {
+            lastword = filtereddict.iterator().next();
+            return lastword;
+        }
+        else{
+            Log.e("READ", "There was more than one word left in the filtereddict");
+            return null;
+        }
     }
 
+    // restore filtereddict to contain fulldict again
     public void reset(){
-        // remove filter and re-start with original lexicon
+
+        filtereddict.addAll(fulldict);
+
     }
 
-    */
 }
