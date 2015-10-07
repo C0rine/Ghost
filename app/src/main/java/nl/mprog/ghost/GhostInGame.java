@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 public class GhostInGame extends BaseActivity {
 
@@ -59,5 +60,12 @@ public class GhostInGame extends BaseActivity {
 
         startActivityForResult(debugWin, 1);
 
+    }
+
+    public void lexiconCheck(View view) {
+        String prefix = "aai";
+        //getText(findViewById(R.id.add_letter_button);
+        Lexicon lexicon = new Lexicon(this, "dutch");
+        lexicon.filter("aai");
     }
 }
