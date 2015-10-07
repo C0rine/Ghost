@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Corine Jacobs
+     10001326
+     Corine_J@MSN.com
+     Minor Programmeren 2015/2016 - Universiteit van Amsterdam -->
+
+<!-- implementation of custom style for radiobuttons for NL language and dictionary preferences -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="true" >
+        <layer-list>
+            <item>
+                <bitmap android:src="@drawable/flag_nl"
+                    android:gravity="center|bottom|clip_vertical" />
+            </item>
+            <item>
+                <shape android:shape="rectangle" >
+                    <corners android:radius="3dp" />
+                    <stroke android:width="1dp" android:color="#ffffff" />
+                    <solid android:color="#00000000" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+
+    <item android:state_checked="true">
+        <layer-list>
+            <item>
+                <bitmap android:src="@drawable/flag_nl"
+                    android:gravity="center|bottom|clip_vertical"
+                    />
+            </item>
+            <item>
+                <shape android:shape="rectangle" >
+                    <corners android:radius="3dp" />
+                    <stroke android:width="1dp" android:color="#ffffff" />
+                    <solid android:color="#00000000" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+
+    <item>
+        <layer-list>
+            <item>
+                <bitmap android:src="@drawable/flag_nl"
+                    android:gravity="center|bottom|clip_vertical"
+                    />
+            </item>
+            <item>
+                <shape android:shape="rectangle" >
+                    <solid android:color="#90000000" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+
+</selector>

@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Corine Jacobs
+     10001326
+     Corine_J@MSN.com
+     Minor Programmeren 2015/2016 - Universiteit van Amsterdam -->
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="nl.mprog.ghost" >
 

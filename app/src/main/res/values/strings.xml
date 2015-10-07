@@ -44,5 +44,6 @@
     <string name="cancelled_text">Cancelled</string>
     <string name="exit_text">Exit</string>
     <string name="title_activity_base">BaseActivity</string>
+    <string name="choose_dictionary">Choose dictionary</string>
 
 </resources>

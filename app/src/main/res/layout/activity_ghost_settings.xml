@@ -66,17 +66,21 @@
 
                     <RadioButton
                         android:id="@+id/languagepref_nl_radiobutton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/flag_nl_text"
-                        />
+                        android:layout_width="100dp"
+                        android:layout_height="60dp"
+                        android:layout_margin="5dp"
+                        android:button="@android:color/transparent"
+                        android:text=""
+                        android:background="@drawable/radiobutton_nl" />
 
                     <RadioButton
                         android:id="@+id/languagepref_en_radiobutton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/flag_en_text"
-                        />
+                        android:layout_width="100dp"
+                        android:layout_height="60dp"
+                        android:layout_margin="5dp"
+                        android:button="@android:color/transparent"
+                        android:text=""
+                        android:background="@drawable/radiobutton_en" />
                 </RadioGroup>
 
             </RelativeLayout>
@@ -108,17 +112,23 @@
 
                     <RadioButton
                         android:id="@+id/dictionarypref_nl_radiobutton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/flag_nl_text"
-                         />
+                        android:onClick="dictprefChosen"
+                        android:layout_width="100dp"
+                        android:layout_height="60dp"
+                        android:button="@android:color/transparent"
+                        android:text=""
+                        android:background="@drawable/radiobutton_nl"
+                        android:layout_margin="5dp" />
 
                     <RadioButton
                         android:id="@+id/dictionarypref_en_radiobutton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/flag_en_text"
-                        />
+                        android:onClick="dictprefChosen"
+                        android:layout_width="100dp"
+                        android:layout_height="60dp"
+                        android:button="@android:color/transparent"
+                        android:text=""
+                        android:background="@drawable/radiobutton_en"
+                        android:layout_margin="5dp" />
 
                 </RadioGroup>
 

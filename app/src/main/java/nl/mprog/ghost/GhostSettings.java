@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RadioButton;
+import android.widget.Toast;
 
 // Does not inherit from BaseActivity since the actionbar in this activity
 // does not need to contain a menuitem to go to the settings.
@@ -56,5 +58,22 @@ public class GhostSettings extends AppCompatActivity {
 
     public void goBack(View view) {
         onBackPressed();
+    }
+
+    public void dictprefChosen(View view) {
+
+        boolean checked = ((RadioButton) view).isChecked();
+
+        switch (view.getId()){
+            case R.id.dictionarypref_nl_radiobutton:
+                if (checked)
+                    //Toast.makeText(this, "dict NL chosen", Toast.LENGTH_SHORT).show();
+                    break;
+            case R.id.dictionarypref_en_radiobutton:
+                if (checked)
+                    // Toast.makeText(this, "dict EN chosen", Toast.LENGTH_SHORT).show();
+                    break;
+        }
+
     }
 }
