@@ -76,4 +76,11 @@ public class GhostSettings extends AppCompatActivity {
         }
 
     }
+
+    public void openInstructions(View view) {
+
+        Intent openinstructions = new Intent(this, GhostInstructions.class);
+
+        startActivityForResult(openinstructions, 1);
+    }
 }

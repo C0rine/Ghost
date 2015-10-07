@@ -44,6 +44,12 @@ public class BaseActivity extends AppCompatActivity {
             Intent openSettings = new Intent(this, GhostSettings.class);
             startActivityForResult(openSettings, 1);
         }
+        // open instructions
+        else if (id == R.id.help){
+            Intent openinstructions = new Intent(this, GhostInstructions.class);
+            startActivityForResult(openinstructions, 1);
+            return true;
+        }
         // close app
         else if (id == R.id.exit){
             // exit the application

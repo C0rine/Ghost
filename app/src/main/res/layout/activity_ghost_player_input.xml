@@ -16,140 +16,154 @@
     android:background="@mipmap/other_bg">
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
+    <ScrollView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#000000"
-        android:layout_margin="10dp">
+        android:id="@+id/scrollView"
+        android:layout_weight="1">
 
-        <Spinner
-            android:id="@+id/player1_avatarspinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentStart="true"
-            android:layout_toStartOf="@+id/player1_edittext" />
-
-        <TextView
-            android:id="@+id/player1_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/player1_text"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="51dp"
-            android:textSize="30sp"
-            android:textColor="#ffffff"
-            android:padding="5dp"
-            android:layout_margin="5dp" />
-
-        <EditText
-            android:id="@+id/player1_edittext"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/player1_text"
-            android:layout_alignStart="@+id/player1_text"
-            android:textColor="#ffffff"
-            android:text="@string/player1_edittext_text"
-            android:padding="5dp"
-            android:layout_margin="5dp" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#000000"
-        android:layout_margin="10dp">
-
-        <Spinner
-            android:id="@+id/player2_avatarspinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_centerVertical="true"
-            android:layout_toStartOf="@+id/player2_text" />
-
-        <TextView
-            android:id="@+id/player2_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/player2_text"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="49dp"
-            android:textSize="30sp"
-            android:textColor="#ffffff"
-            android:padding="5dp"
-            android:layout_margin="5dp" />
-
-        <EditText
-            android:id="@+id/player2_edittext"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/player2_text"
-            android:layout_toEndOf="@+id/player2_avatarspinner"
-            android:textColor="#ffffff"
-            android:text="@string/enter_username_text"
-            android:padding="5dp"
-            android:layout_margin="5dp" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#000000"
-        android:layout_margin="10dp">
-
-        <TextView
-            android:id="@+id/dictionarypick_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/choose_dictionary"
-            android:textColor="#ffffff"
-            android:textSize="25sp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp" />
-
-        <RadioGroup
-            android:layout_below="@id/dictionarypick_title"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_horizontal"
-            android:layout_marginBottom="10dp">
+            android:layout_height="wrap_content">
 
-            <RadioButton
-                android:id="@+id/radiobutton_nl"
-                android:background="@drawable/radiobutton_nl"
-                android:layout_width="100dp"
-                android:layout_height="60dp"
-                android:layout_margin="5dp"
-                android:button="@android:color/transparent"
-                android:text=""
-                android:textColor="#ffffff"
-                android:padding="15dp" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#000000"
+                android:layout_margin="10dp">
 
-            <RadioButton
-                android:id="@+id/radiobutton_en"
-                android:background="@drawable/radiobutton_en"
-                android:layout_width="100dp"
-                android:layout_height="60dp"
-                android:layout_margin="5dp"
-                android:button="@android:color/transparent"
-                android:text=""
-                android:textColor="#ffffff"
-                />
+                <Spinner
+                    android:id="@+id/player1_avatarspinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_toStartOf="@+id/player1_edittext" />
 
-        </RadioGroup>
+                <TextView
+                    android:id="@+id/player1_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/player1_text"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="51dp"
+                    android:textSize="30sp"
+                    android:textColor="#ffffff"
+                    android:padding="5dp"
+                    android:layout_margin="5dp" />
 
-    </RelativeLayout>
+                <EditText
+                    android:id="@+id/player1_edittext"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/player1_text"
+                    android:layout_alignStart="@+id/player1_text"
+                    android:textColor="#ffffff"
+                    android:text="@string/player1_edittext_text"
+                    android:padding="5dp"
+                    android:layout_margin="5dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#000000"
+                android:layout_margin="10dp">
+
+                <Spinner
+                    android:id="@+id/player2_avatarspinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@+id/player2_text" />
+
+                <TextView
+                    android:id="@+id/player2_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/player2_text"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="49dp"
+                    android:textSize="30sp"
+                    android:textColor="#ffffff"
+                    android:padding="5dp"
+                    android:layout_margin="5dp" />
+
+                <EditText
+                    android:id="@+id/player2_edittext"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/player2_text"
+                    android:layout_toEndOf="@+id/player2_avatarspinner"
+                    android:textColor="#ffffff"
+                    android:text="@string/enter_username_text"
+                    android:padding="5dp"
+                    android:layout_margin="5dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#000000"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:id="@+id/dictionarypick_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/choose_dictionary"
+                    android:textColor="#ffffff"
+                    android:textSize="25sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp" />
+
+                <RadioGroup
+                    android:layout_below="@id/dictionarypick_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_horizontal"
+                    android:layout_marginBottom="10dp">
+
+                    <RadioButton
+                        android:id="@+id/radiobutton_nl"
+                        android:background="@drawable/radiobutton_nl"
+                        android:layout_width="100dp"
+                        android:layout_height="60dp"
+                        android:layout_margin="5dp"
+                        android:button="@android:color/transparent"
+                        android:text=""
+                        android:textColor="#ffffff"
+                        android:padding="15dp" />
+
+                    <RadioButton
+                        android:id="@+id/radiobutton_en"
+                        android:background="@drawable/radiobutton_en"
+                        android:layout_width="100dp"
+                        android:layout_height="60dp"
+                        android:layout_margin="5dp"
+                        android:button="@android:color/transparent"
+                        android:text=""
+                        android:textColor="#ffffff"
+                        />
+
+                </RadioGroup>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
     <Button
         android:id="@+id/startbutton"

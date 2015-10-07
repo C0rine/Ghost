@@ -33,7 +33,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:layout_marginBottom="10dp">
-,
+
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -204,6 +204,7 @@
 
             <Button
                 android:id="@+id/instructions_button"
+                android:onClick="openInstructions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/instructions_button"

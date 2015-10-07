@@ -45,5 +45,6 @@
     <string name="exit_text">Exit</string>
     <string name="title_activity_base">BaseActivity</string>
     <string name="choose_dictionary">Choose dictionary</string>
+    <string name="help_text">Help</string>
 
 </resources>
