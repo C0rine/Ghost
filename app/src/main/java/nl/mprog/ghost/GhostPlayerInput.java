@@ -8,6 +8,7 @@ package nl.mprog.ghost;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -80,12 +81,13 @@ public class GhostPlayerInput extends BaseActivity {
             dict = "English";
         }
         else{
-            dict = "test";
+            Log.e("LEXICON", "Something went wrong with getting selection from radiobuttons");
         }
 
         // Intent to start the next activity (ingame mode)
         Intent startPlaying = new Intent(this, GhostInGame.class);
 
+        // send player names and selected dictionary with the intent
         startPlaying.putExtra("player 1 name", player1name);
         startPlaying.putExtra("player 2 name", player2name);
         startPlaying.putExtra("dictionary", "Dutch");

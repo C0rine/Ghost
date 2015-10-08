@@ -46,7 +46,7 @@ public class Game{
 
 
     // returns a boolean indicating which player is up for guessing
-    public boolean turn(){
+    public boolean getTurn(){
 
         return turn;
 
@@ -63,8 +63,8 @@ public class Game{
     // returns a boolean indicating if the game has ended
     public boolean ended(){
 
-        // the current wordfragment is a word in lexicon and is longer than 3 letters
-        if ((theword.length() > 3) && lexicon.count() == 1 && lexicon.result().equals(theword)){
+        // the current wordfragment is longer than 3 letters and is a word in lexicon
+        if ((theword.length() > 3) && lexicon.filtereddict.contains(theword)){
             return true;
         }
         // the current wordfragment cannot become a word -> filtered list is empty

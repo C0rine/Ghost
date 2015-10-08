@@ -11,14 +11,32 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 public class GhostWinScreen extends BaseActivity {
+
+    private TextView winnertext;
+    private String winnername;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ghost_win_screen);
+
+        winnertext = (TextView) findViewById(R.id.playerwin_text);
+
+        // open extras from intent
+        // retrieve winner
+        Bundle recvIntent = getIntent().getExtras();
+        winnername = recvIntent.getString("Winner");
+
+        // display the name of the winner
+        winnertext.setText(winnername + " wins!");
+
+
     }
 
     @Override

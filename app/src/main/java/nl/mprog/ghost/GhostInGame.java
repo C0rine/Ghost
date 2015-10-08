@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class GhostInGame extends BaseActivity {
@@ -27,18 +29,28 @@ public class GhostInGame extends BaseActivity {
 
     public Game game;
 
+    public TextView currentfragment;
+    public EditText guessinput;
+    public TextView turnindicator;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ghost_in_game);
 
-        // open extra's from intent
+        currentfragment = (TextView) findViewById(R.id.current_fragment_text);
+        guessinput = (EditText) findViewById(R.id.userinput_editText);
+        turnindicator = (TextView) findViewById(R.id.playerturn_text);
+
+        currentfragment.setText("");
+
+        // open extras from intent
         Bundle recvIntent = getIntent().getExtras();
         player1name = recvIntent.getString("player 1 name");
         player2name = recvIntent.getString("player 2 name");
         dict = recvIntent.getString("dictionary");
 
-        // create two new instances of player class based on user input from previous
+        // create two new instances of player class based on user input from previous activity
         player1 = new Player(player1name, 0);
         player2 = new Player(player2name, 0);
 
@@ -47,6 +59,14 @@ public class GhostInGame extends BaseActivity {
 
         // create the game
         game = new Game(player1, player2, lexicon);
+
+        // get the player who gets the first turn and display this
+        if (game.getTurn()){
+            turnindicator.setText(player1.getName());
+        }
+        else{
+            turnindicator.setText(player2.getName());
+        }
     }
 
     @Override
@@ -89,20 +109,34 @@ public class GhostInGame extends BaseActivity {
 
     }
 
-    public void lexiconCheck(View view) {
-        /*String prefix = "aaitjes";
-        Lexicon lexicon = new Lexicon(this, "dutch");
-        lexicon.filter(prefix);
-        String count = Integer.toString(lexicon.count());
-        String lastword = lexicon.result();
-        Toast.makeText(this, lastword + count, Toast.LENGTH_SHORT).show();
+    public void makeGuess(View view) {
 
-        lexicon.reset();
+        // add new letter to fragment and update this to the screen
+        String newfragment = currentfragment.getText().toString() + guessinput.getText().toString();
+        currentfragment.setText(newfragment);
 
-        prefix = "olieboorders";
-        lexicon.filter(prefix);
-        count = Integer.toString(lexicon.count());
-        lastword = lexicon.result();
-        Toast.makeText(this, lastword + count, Toast.LENGTH_SHORT).show();*/
+        // process the guess in the game
+        // filters lexicon and changes the player turn
+        game.guess(newfragment);
+
+        // check if game has not ended
+        if (game.ended()){
+            Intent uponWin = new Intent(this, GhostWinScreen.class);
+            if (game.getTurn()){
+                uponWin.putExtra("Winner", player1.getName());
+            }
+            else{
+                uponWin.putExtra("Winner", player2.getName());
+            }
+            startActivityForResult(uponWin, 1);
+        }
+
+        // update text to indicate who's turn it is
+        if (game.getTurn()){
+            turnindicator.setText(player1.getName());
+        }
+        else{
+            turnindicator.setText(player2.getName());
+        }
     }
 }
