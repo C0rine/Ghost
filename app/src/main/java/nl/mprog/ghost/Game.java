@@ -5,7 +5,6 @@
 
 package nl.mprog.ghost;
 
-import android.content.Context;
 import android.util.Log;
 
 import java.util.Random;
@@ -40,6 +39,15 @@ public class Game{
 
         theword = wordfragment;
         lexicon.filter(theword);
+
+        // gives one point for each time a letter gets guessed
+        if(getTurn()){
+            player1.setPoints(player1.getPoints() + 1);
+        }
+        else{
+            player2.setPoints(player2.getPoints() + 1);
+        }
+
         changeTurn();
 
     }
