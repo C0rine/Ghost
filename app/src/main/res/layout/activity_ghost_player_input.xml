@@ -129,6 +129,7 @@
                     android:layout_marginTop="10dp" />
 
                 <RadioGroup
+                    android:id="@+id/radiogroup_dictionary"
                     android:layout_below="@id/dictionarypick_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -143,8 +144,8 @@
                         android:layout_height="60dp"
                         android:layout_margin="5dp"
                         android:button="@android:color/transparent"
-                        android:text=""
-                        android:textColor="#ffffff"
+                        android:text="@string/flag_nl_text"
+                        android:textColor="#00000000"
                         android:padding="15dp" />
 
                     <RadioButton
@@ -154,8 +155,8 @@
                         android:layout_height="60dp"
                         android:layout_margin="5dp"
                         android:button="@android:color/transparent"
-                        android:text=""
-                        android:textColor="#ffffff"
+                        android:text="@string/flag_en_text"
+                        android:textColor="#00000000"
                         />
 
                 </RadioGroup>

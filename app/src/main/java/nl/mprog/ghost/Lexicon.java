@@ -27,6 +27,7 @@ public class Lexicon{
 
     HashSet<String> fulldict;
     HashSet<String> filtereddict;
+    String langg;
     int count = 0;
 
 
@@ -35,6 +36,7 @@ public class Lexicon{
 
         fulldict = new HashSet<>();
         filtereddict = new HashSet<>();
+        langg = language;
 
         try {
             Log.d("READ", "Start to read file and load in words");
@@ -42,10 +44,10 @@ public class Lexicon{
             InputStream inputstream;
 
             // use dictionary based on provided argument
-            if (Objects.equals(language, "english")){
+            if (Objects.equals(langg, "English")){
                 inputstream = am.open("english.txt");
             }
-            else if (Objects.equals(language, "dutch")){
+            else if (Objects.equals(langg, "Dutch")){
                 inputstream = am.open("dutch.txt");
             }
             else{

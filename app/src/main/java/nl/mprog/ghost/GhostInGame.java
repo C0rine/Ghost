@@ -16,10 +16,37 @@ import android.widget.Toast;
 
 public class GhostInGame extends BaseActivity {
 
+    public Player player1;
+    public String player1name;
+
+    public Player player2;
+    public String player2name;
+
+    public Lexicon lexicon;
+    public String dict;
+
+    public Game game;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ghost_in_game);
+
+        // open extra's from intent
+        Bundle recvIntent = getIntent().getExtras();
+        player1name = recvIntent.getString("player 1 name");
+        player2name = recvIntent.getString("player 2 name");
+        dict = recvIntent.getString("dictionary");
+
+        // create two new instances of player class based on user input from previous
+        player1 = new Player(player1name, 0);
+        player2 = new Player(player2name, 0);
+
+        // create new lexicon instance with selected dictionary
+        lexicon = new Lexicon(this, dict);
+
+        // create the game
+        game = new Game(player1, player2, lexicon);
     }
 
     @Override
@@ -63,7 +90,7 @@ public class GhostInGame extends BaseActivity {
     }
 
     public void lexiconCheck(View view) {
-        String prefix = "aaitjes";
+        /*String prefix = "aaitjes";
         Lexicon lexicon = new Lexicon(this, "dutch");
         lexicon.filter(prefix);
         String count = Integer.toString(lexicon.count());
@@ -76,6 +103,6 @@ public class GhostInGame extends BaseActivity {
         lexicon.filter(prefix);
         count = Integer.toString(lexicon.count());
         lastword = lexicon.result();
-        Toast.makeText(this, lastword + count, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, lastword + count, Toast.LENGTH_SHORT).show();*/
     }
 }

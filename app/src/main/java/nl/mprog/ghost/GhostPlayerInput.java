@@ -11,13 +11,33 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+
+import java.util.Objects;
 
 public class GhostPlayerInput extends BaseActivity {
+
+    EditText player1_input;
+    EditText player2_input;
+
+    RadioGroup dictionaryoptions;
+
+    String player1name;
+    String player2name;
+    Integer selectedIdRadio;
+    String dict;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ghost_player_input);
+
+        player1_input = (EditText) findViewById(R.id.player1_edittext);
+        player2_input = (EditText) findViewById(R.id.player2_edittext);
+
+        dictionaryoptions = (RadioGroup) findViewById(R.id.radiogroup_dictionary);
     }
 
     @Override
@@ -44,7 +64,31 @@ public class GhostPlayerInput extends BaseActivity {
     // after completing userinput open new activity to actually start playing the game
     public void startPlaying(View view) {
 
+        // get player names from edit texts
+        player1name = player1_input.getText().toString();
+        player2name = player2_input.getText().toString();
+
+        // get selected language from radiobuttons
+        selectedIdRadio = dictionaryoptions.getCheckedRadioButtonId();
+        RadioButton radioselected = (RadioButton) findViewById(selectedIdRadio);
+        String selection = radioselected.getText().toString();
+
+        if (Objects.equals(selection, "Nederlands")){
+            dict = "Dutch";
+        }
+        else if (Objects.equals(selection, "English")){
+            dict = "English";
+        }
+        else{
+            dict = "test";
+        }
+
+        // Intent to start the next activity (ingame mode)
         Intent startPlaying = new Intent(this, GhostInGame.class);
+
+        startPlaying.putExtra("player 1 name", player1name);
+        startPlaying.putExtra("player 2 name", player2name);
+        startPlaying.putExtra("dictionary", "Dutch");
 
         startActivityForResult(startPlaying, 1);
 

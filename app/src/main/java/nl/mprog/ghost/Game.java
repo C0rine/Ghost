@@ -20,7 +20,7 @@ public class Game{
     String theword;
 
     // constructor
-    public Game(Context context, Player player1st, Player player2nd, Lexicon dict){
+    public Game(Player player1st, Player player2nd, Lexicon dict){
 
         player1 = player1st;
         player2 = player2nd;
