@@ -13,7 +13,7 @@ public class Highscores {
     public HashMap<String, Integer> highscoremap;
 
     // constructor
-    public Highscores{
+    public Highscores(){
 
         highscoremap = new HashMap<>();
 
@@ -26,7 +26,17 @@ public class Highscores {
         String name = player.getName();
         Integer points = player.getPoints();
 
-        highscoremap.put(name, points);
+        // put method of hashmap will create new key-value pair if key does not yet exist
+        if (highscoremap.get(name) != null){
+            // name is already in map
+            // 'put' will overwrite value if key is already present so this automatically
+            // prevents duplicates
+            highscoremap.put(name, highscoremap.get(name) + points);
+        }
+        else{
+            // name is not yet in map
+            highscoremap.put(name, points);
+        }
 
         saveHighScores();
 
@@ -43,6 +53,13 @@ public class Highscores {
 
     // save highscores to local memory
     public void saveHighScores(){
+
+    }
+
+    // clears the hashmap with the highscores
+    public void clearHighScores(){
+
+        highscoremap.clear();
 
     }
 
