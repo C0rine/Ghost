@@ -64,7 +64,7 @@
                     android:layout_below="@+id/player1_text"
                     android:layout_alignStart="@+id/player1_text"
                     android:textColor="#ffffff"
-                    android:text="@string/player1_edittext_text"
+                    android:hint="@string/player1_edittext_text"
                     android:padding="5dp"
                     android:layout_margin="5dp" />
 
@@ -106,7 +106,7 @@
                     android:layout_below="@+id/player2_text"
                     android:layout_toEndOf="@+id/player2_avatarspinner"
                     android:textColor="#ffffff"
-                    android:text="@string/enter_username_text"
+                    android:hint="@string/enter_username_text"
                     android:padding="5dp"
                     android:layout_margin="5dp" />
 

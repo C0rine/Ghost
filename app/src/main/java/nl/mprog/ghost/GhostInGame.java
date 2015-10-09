@@ -27,6 +27,8 @@ public class GhostInGame extends BaseActivity {
     public Lexicon lexicon;
     public String dict;
 
+    public Highscores highscore;
+
     public Game game;
 
     public TextView currentfragment;
@@ -59,6 +61,9 @@ public class GhostInGame extends BaseActivity {
 
         // create the game
         game = new Game(player1, player2, lexicon);
+
+        // create highscores
+        highscore = new Highscores();
 
         // get the player who gets the first turn and display this
         if (game.getTurn()){
@@ -121,6 +126,11 @@ public class GhostInGame extends BaseActivity {
 
         // check if game has not ended
         if (game.ended()){
+
+            // insert and test highscore
+            highscore.insertScore(player1);
+            highscore.insertScore(player2);
+
             Intent uponWin = new Intent(this, GhostWinScreen.class);
             if (game.getTurn()){
                 uponWin.putExtra("Winner", player1.getName());
@@ -138,5 +148,8 @@ public class GhostInGame extends BaseActivity {
         else{
             turnindicator.setText(player2.getName());
         }
+
+        // empty edittext
+        guessinput.setText("");
     }
 }
