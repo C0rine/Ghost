@@ -4,6 +4,8 @@ Corine Jacobs
 10001326   
 Corine_J [at] MSN [dot] com   
 
+To run : simply open the project in Android Studio and run it on your own Android Device or in the emulator.  
+
 ### Summary of the project
 Ghost is a wordgame that is played by two players. The players form a word by alternating turns saying a letter, which is added on the end of the word fragment. A player loses when he/she forms a word longer than 3 letters or creates a fragment which cannot become a word by adding more letters.
    
