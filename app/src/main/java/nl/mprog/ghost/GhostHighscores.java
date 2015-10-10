@@ -57,13 +57,6 @@ public class GhostHighscores extends BaseActivity {
             Gson gsonis = new Gson();
             String json = savedInstanceState.getString("HIGH", "");
             highscore = gsonis.fromJson(json, Highscores.class);
-
-            /* add new players to see if this works..
-            player5 = new Player("Thomas", 75);
-            highscore.insertScore(player5); */
-
-            Toast.makeText(this, "savesInstanceState", Toast.LENGTH_LONG).show();
-
         }
         // check if there is anything stored in sharedpreference
         else if(!sPHighscores.equals("EMPTY")){
@@ -74,15 +67,11 @@ public class GhostHighscores extends BaseActivity {
             String json = sPHighscores;
             highscore = gsonsp.fromJson(json, Highscores.class);
 
-            Toast.makeText(this, "Shared Preferences + Corine", Toast.LENGTH_LONG).show();
-
         }
         // if there was nothing saved, a new instance of highscores needs to be made
         else {
             // there were no sharedprefs.
             highscore = new Highscores();
-
-            Toast.makeText(this, "None", Toast.LENGTH_LONG).show();
         }
 
         // put the players in the highscore
@@ -168,6 +157,7 @@ public class GhostHighscores extends BaseActivity {
 
     }
 
+
     // go back to MainActivty
     public void backToHome(View view) {
 
@@ -175,6 +165,7 @@ public class GhostHighscores extends BaseActivity {
 
         startActivityForResult(backToHome, 1);
     }
+
 
     // when user presses android back button make game restart
     @Override
