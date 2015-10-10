@@ -3,21 +3,21 @@
 // Corine_J@MSN.com
 // Minor Programmeren 2015/2016 - Universiteit van Amsterdam
 
-
 package nl.mprog.ghost;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.TreeMap;
+
+import com.google.gson.Gson;
+
 
 public class GhostHighscores extends BaseActivity {
 
@@ -36,22 +36,55 @@ public class GhostHighscores extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ghost_highscores);
 
-        // code below is just to try
+        String sPHighscores = getPreferences(Context.MODE_PRIVATE).getString("HIGHS", "EMPTY");
 
-        player1 = new Player("B", 10);
-        player2 = new Player("A", 1);
-        player3 = new Player("C", 100);
-        player4 = new Player("Corine", 55);
-        player5 = new Player("Thomas", 75);
+        // check if there is data in savedInstanceState
+        if (savedInstanceState != null){
+            // there is something saved in savedInstanceState
+            // load this in
+            Gson gson = new Gson();
+            String json = savedInstanceState.getString("HIGH", "");
+            highscore = gson.fromJson(json, Highscores.class);
 
-        highscore = new Highscores();
+            // add new players to see if this works..
+            player5 = new Player("Thomas", 75);
+            highscore.insertScore(player5);
 
-        highscore.insertScore(player1);
-        highscore.insertScore(player2);
-        highscore.insertScore(player3);
-        highscore.insertScore(player4);
-        highscore.insertScore(player5);
+            Toast.makeText(this, "savesInstanceState", Toast.LENGTH_LONG).show();
 
+        }
+        // check if there is anything stored in sharedpreference
+        else if(!sPHighscores.equals("EMPTY")){
+
+            // there were shared preferences
+            // load this in
+            Gson gson = new Gson();
+            String json = sPHighscores;
+            highscore = gson.fromJson(json, Highscores.class);
+
+            // add new player to see if this works
+            player4 = new Player("Corine", 55);
+            highscore.insertScore(player4);
+
+            Toast.makeText(this, "Shared Preferences + Corine", Toast.LENGTH_LONG).show();
+
+        }
+        // if there was nothing saved, a new instance of highscores needs to be made
+        else {
+            // there were no sharedprefs.
+            // code below is just to try
+
+            highscore = new Highscores();
+
+            player1 = new Player("B", 10);
+            player2 = new Player("A", 1);
+            player3 = new Player("C", 100);
+            highscore.insertScore(player1);
+            highscore.insertScore(player2);
+            highscore.insertScore(player3);
+
+            Toast.makeText(this, "None", Toast.LENGTH_LONG).show();
+        }
 
         // get the listview
         lv = (ListView) findViewById(R.id.highscores_listView);
@@ -63,6 +96,40 @@ public class GhostHighscores extends BaseActivity {
         lv.setAdapter(theAdapter);
 
     }
+
+    // saves data when operating system tries to kill the app/activity
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+
+        Gson gson = new Gson();
+        String jsonhighscore = gson.toJson(highscore);
+        outState.putString("HIGH", jsonhighscore);
+
+        super.onSaveInstanceState(outState);
+    }
+
+    // saves data when user kills application
+    private void saveHighscores(){
+
+        SharedPreferences.Editor sPEditor = getPreferences(Context.MODE_PRIVATE).edit();
+
+        Gson gson = new Gson();
+        String jsonhighscore = gson.toJson(highscore);
+        sPEditor.putString("HIGHS", jsonhighscore);
+
+        sPEditor.commit();
+
+    }
+
+    @Override
+    protected void onStop() {
+
+        saveHighscores();
+
+        super.onStop();
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -87,6 +154,8 @@ public class GhostHighscores extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
+
     // start new game in new activity starting again with user input
     public void newGameStart(View view) {
 
@@ -107,6 +176,7 @@ public class GhostHighscores extends BaseActivity {
     // when user presses android back button make game restart
     @Override
     public void onBackPressed() {
+
         Intent backToHome = new Intent(this, GhostMainActivity.class);
 
         startActivityForResult(backToHome, 1);
