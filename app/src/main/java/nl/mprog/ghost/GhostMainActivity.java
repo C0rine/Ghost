@@ -56,6 +56,10 @@ public class GhostMainActivity extends BaseActivity {
 
         Intent viewHighscores = new Intent(this, GhostHighscores.class);
 
+        // add a sign telling GhostHighscores.java that we open the highscores without
+        // wanting to add a new player
+        viewHighscores.putExtra("SIGN", 1);
+
         startActivityForResult(viewHighscores, 1);
     }
 }

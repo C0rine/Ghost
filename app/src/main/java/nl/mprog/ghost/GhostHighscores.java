@@ -22,11 +22,9 @@ import com.google.gson.Gson;
 public class GhostHighscores extends BaseActivity {
 
     public Highscores highscore;
-    public Player player1;
-    public Player player2;
-    public Player player3;
-    public Player player4;
-    public Player player5;
+
+    private Player winningplayer;
+    private Player losingplayer;
 
     public ListView lv;
 
@@ -36,19 +34,33 @@ public class GhostHighscores extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ghost_highscores);
 
+        // open extras from intent
+        Bundle recvIntent = getIntent().getExtras();
+        // retrieve winner
+        Gson gson1 = new Gson();
+        String jsonwin = recvIntent.getString("WINNER");
+        // retreive loser
+        Gson gson2 = new Gson();
+        String jsonlose = recvIntent.getString("LOSER");
+
+        winningplayer = gson1.fromJson(jsonwin, Player.class);
+        losingplayer = gson2.fromJson(jsonlose, Player.class);
+
+        Toast.makeText(this, losingplayer.getName(), Toast.LENGTH_LONG).show();
+
         String sPHighscores = getPreferences(Context.MODE_PRIVATE).getString("HIGHS", "EMPTY");
 
         // check if there is data in savedInstanceState
         if (savedInstanceState != null){
             // there is something saved in savedInstanceState
             // load this in
-            Gson gson = new Gson();
+            Gson gsonis = new Gson();
             String json = savedInstanceState.getString("HIGH", "");
-            highscore = gson.fromJson(json, Highscores.class);
+            highscore = gsonis.fromJson(json, Highscores.class);
 
-            // add new players to see if this works..
+            /* add new players to see if this works..
             player5 = new Player("Thomas", 75);
-            highscore.insertScore(player5);
+            highscore.insertScore(player5); */
 
             Toast.makeText(this, "savesInstanceState", Toast.LENGTH_LONG).show();
 
@@ -58,13 +70,9 @@ public class GhostHighscores extends BaseActivity {
 
             // there were shared preferences
             // load this in
-            Gson gson = new Gson();
+            Gson gsonsp = new Gson();
             String json = sPHighscores;
-            highscore = gson.fromJson(json, Highscores.class);
-
-            // add new player to see if this works
-            player4 = new Player("Corine", 55);
-            highscore.insertScore(player4);
+            highscore = gsonsp.fromJson(json, Highscores.class);
 
             Toast.makeText(this, "Shared Preferences + Corine", Toast.LENGTH_LONG).show();
 
@@ -72,19 +80,14 @@ public class GhostHighscores extends BaseActivity {
         // if there was nothing saved, a new instance of highscores needs to be made
         else {
             // there were no sharedprefs.
-            // code below is just to try
-
             highscore = new Highscores();
-
-            player1 = new Player("B", 10);
-            player2 = new Player("A", 1);
-            player3 = new Player("C", 100);
-            highscore.insertScore(player1);
-            highscore.insertScore(player2);
-            highscore.insertScore(player3);
 
             Toast.makeText(this, "None", Toast.LENGTH_LONG).show();
         }
+
+        // put the players in the highscore
+        highscore.insertScore(winningplayer);
+        highscore.insertScore(losingplayer);
 
         // get the listview
         lv = (ListView) findViewById(R.id.highscores_listView);

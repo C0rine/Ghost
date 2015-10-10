@@ -7,7 +7,6 @@ package nl.mprog.ghost;
 
 import android.app.DialogFragment;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,6 +14,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
 
 public class GhostInGame extends BaseActivity {
 
@@ -53,6 +54,7 @@ public class GhostInGame extends BaseActivity {
         dict = recvIntent.getString("dictionary");
 
         // create two new instances of player class based on user input from previous activity
+        // set their initial score to 0
         player1 = new Player(player1name, 0);
         player2 = new Player(player2name, 0);
 
@@ -63,9 +65,10 @@ public class GhostInGame extends BaseActivity {
         game = new Game(player1, player2, lexicon);
 
         // create highscores
-        highscore = new Highscores();
+        // highscore = new Highscores();
 
         // get the player who gets the first turn and display this
+        // the first turn gets decided at random in Game.java
         if (game.getTurn()){
             turnindicator.setText(player1.getName());
         }
@@ -127,16 +130,31 @@ public class GhostInGame extends BaseActivity {
         // check if game has not ended
         if (game.ended()){
 
-            // insert and test highscore
-            highscore.insertScore(player1);
-            highscore.insertScore(player2);
+            // game has ended winner needs to be determined
 
             Intent uponWin = new Intent(this, GhostWinScreen.class);
-            if (game.getTurn()){
-                uponWin.putExtra("Winner", player1.getName());
+
+            // prepare to send Player object by converting them with Gson
+            Gson gson1 = new Gson();
+            String jsonplayer1 = gson1.toJson(player1);
+            Gson gson2 = new Gson();
+            String jsonplayer2 = gson2.toJson(player2);
+
+            if (game.winner()){
+
+                // player 1 won
+                // put player objects in intent with key assigning who won
+                uponWin.putExtra("WINNER", jsonplayer1);
+                uponWin.putExtra("LOSER", jsonplayer2);
+
             }
             else{
-                uponWin.putExtra("Winner", player2.getName());
+
+                // player 2 won
+                // put player objects in intent with key assigning who won
+                uponWin.putExtra("LOSER", jsonplayer1);
+                uponWin.putExtra("WINNER", jsonplayer2);
+
             }
             startActivityForResult(uponWin, 1);
         }
