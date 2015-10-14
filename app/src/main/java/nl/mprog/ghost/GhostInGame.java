@@ -119,55 +119,67 @@ public class GhostInGame extends BaseActivity {
 
     public void makeGuess(View view) {
 
-        // add new letter to fragment and update this to the screen
-        String newfragment = currentfragment.getText().toString() + guessinput.getText().toString();
-        currentfragment.setText(newfragment);
+        // retrieve the string the user want to input as guess
+        String toadd = guessinput.getText().toString();
 
-        // process the guess in the game
-        // filters lexicon and changes the player turn
-        game.guess(newfragment);
+        // check if the user has made a legitimate guess (only single alphabetical characters are allowed)
+        if (toadd.length() > 1 || !toadd.matches("[a-zA-Z]+")){
+            Toast.makeText(this, "Only single alphabetical characters are allowed", Toast.LENGTH_LONG).show();
+        }
+        else {
+            // convert the single alphabetical input to lowercase (if this is not already the case)
+            // to make guess case-insensitive
+            toadd = toadd.toLowerCase();
 
-        // check if game has not ended
-        if (game.ended()){
+            // add new letter to fragment and update this to the screen
+            String newfragment = currentfragment.getText().toString() + toadd;
+            currentfragment.setText(newfragment);
 
-            // game has ended winner needs to be determined
+            // process the guess in the game
+            // filters lexicon and changes the player turn
+            game.guess(newfragment);
 
-            Intent uponWin = new Intent(this, GhostWinScreen.class);
+            // check if game has not ended
+            if (game.ended()) {
 
-            // prepare to send Player object by converting them with Gson
-            Gson gson1 = new Gson();
-            String jsonplayer1 = gson1.toJson(player1);
-            Gson gson2 = new Gson();
-            String jsonplayer2 = gson2.toJson(player2);
+                // game has ended winner needs to be determined
 
-            if (game.winner()){
+                Intent uponWin = new Intent(this, GhostWinScreen.class);
 
-                // player 1 won
-                // put player objects in intent with key assigning who won
-                uponWin.putExtra("WINNER", jsonplayer1);
-                uponWin.putExtra("LOSER", jsonplayer2);
+                // prepare to send Player object by converting them with Gson
+                Gson gson1 = new Gson();
+                String jsonplayer1 = gson1.toJson(player1);
+                Gson gson2 = new Gson();
+                String jsonplayer2 = gson2.toJson(player2);
 
+                if (game.winner()) {
+
+                    // player 1 won
+                    // put player objects in intent with key assigning who won
+                    uponWin.putExtra("WINNER", jsonplayer1);
+                    uponWin.putExtra("LOSER", jsonplayer2);
+
+                } else {
+
+                    // player 2 won
+                    // put player objects in intent with key assigning who won
+                    uponWin.putExtra("LOSER", jsonplayer1);
+                    uponWin.putExtra("WINNER", jsonplayer2);
+
+                }
+                startActivityForResult(uponWin, 1);
             }
-            else{
 
-                // player 2 won
-                // put player objects in intent with key assigning who won
-                uponWin.putExtra("LOSER", jsonplayer1);
-                uponWin.putExtra("WINNER", jsonplayer2);
-
+            // update text to indicate who's turn it is
+            if (game.getTurn()) {
+                turnindicator.setText(player1.getName());
+            } else {
+                turnindicator.setText(player2.getName());
             }
-            startActivityForResult(uponWin, 1);
-        }
 
-        // update text to indicate who's turn it is
-        if (game.getTurn()){
-            turnindicator.setText(player1.getName());
-        }
-        else{
-            turnindicator.setText(player2.getName());
-        }
+            // empty edittext
+            guessinput.setText("");
 
-        // empty edittext
-        guessinput.setText("");
+        }
     }
 }
