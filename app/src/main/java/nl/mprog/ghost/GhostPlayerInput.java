@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import java.util.Objects;
 
@@ -84,15 +85,22 @@ public class GhostPlayerInput extends BaseActivity {
             Log.e("LEXICON", "Something went wrong with getting selection from radiobuttons");
         }
 
-        // Intent to start the next activity (ingame mode)
-        Intent startPlaying = new Intent(this, GhostInGame.class);
+        // make sure the user cant use a username longer than 10 characters
+        if (player1name.length() > 10 || player2name.length() > 10){
+            Toast.makeText(this, getString(R.string.lenghtusername_toast), Toast.LENGTH_LONG).show();
+        }
+        // else we can simply start the ingame activity to start the gameplay
+        else{
+            // Intent to start the next activity (ingame mode)
+            Intent startPlaying = new Intent(this, GhostInGame.class);
 
-        // send player names and selected dictionary with the intent
-        startPlaying.putExtra("player 1 name", player1name);
-        startPlaying.putExtra("player 2 name", player2name);
-        startPlaying.putExtra("dictionary", "Dutch");
+            // send player names and selected dictionary with the intent
+            startPlaying.putExtra("player 1 name", player1name);
+            startPlaying.putExtra("player 2 name", player2name);
+            startPlaying.putExtra("dictionary", "Dutch");
 
-        startActivityForResult(startPlaying, 1);
+            startActivityForResult(startPlaying, 1);
+        }
 
     }
 }
