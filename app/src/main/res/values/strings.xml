@@ -48,5 +48,8 @@
     <string name="help_text">Help</string>
     <string name="lenghtusername_toast">Player name cannot be longer than 10 characters</string>
     <string name="clearhighscore_text">Clear Highscores</string>
+    <string name="no_highscores">There is no highscore created yet</string>
+    <string name="cleared_highscores">Cleared Highscores</string>
+    <string name="sameplayername_warningtext">Player 1 and Player 2 cannot have the same name</string>
 
 </resources>

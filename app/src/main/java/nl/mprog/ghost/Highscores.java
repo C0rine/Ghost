@@ -50,9 +50,6 @@ public class Highscores {
             // name is not yet in map
             highscoremap.put(name, Integer.toString(points));
         }
-
-        // saveHighScores();
-
     }
 
 
@@ -88,18 +85,11 @@ public class Highscores {
     }
 
 
-    // save highscores to local memory
-    public void saveHighScores(){
-
-        //TODO
-
-    }
-
-
     // clears the hashmap with the highscores
-    public void clearHighScores(){
+    public void clearScores(){
 
         highscoremap.clear();
+        sortedMap.clear();
 
     }
 

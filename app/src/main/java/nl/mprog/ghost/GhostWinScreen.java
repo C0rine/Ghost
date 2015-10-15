@@ -42,10 +42,6 @@ public class GhostWinScreen extends BaseActivity {
         winningplayer = gson1.fromJson(jsonwin, Player.class);
         losingplayer = gson2.fromJson(jsonlose, Player.class);
 
-        Toast.makeText(this, "winner: " + winningplayer.getName(), Toast.LENGTH_LONG).show();
-        Toast.makeText(this, "loser: " + losingplayer.getName(), Toast.LENGTH_LONG).show();
-
-
         // display the name of the winner
         winnertext.setText(winningplayer.getName() + " wins!");
 

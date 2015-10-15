@@ -19,6 +19,8 @@ public class GhostMainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ghost_main);
+
+        Toast.makeText(this, "changed stuffss", Toast.LENGTH_SHORT).show();
     }
 
     @Override

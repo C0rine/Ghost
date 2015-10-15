@@ -115,15 +115,6 @@ public class GhostInGame extends BaseActivity {
 
     }
 
-    // for debugging purposes. clicking on ghost image will take you immediately to winscreen
-    public void debugBackdoor(View view) {
-
-        Intent debugWin = new Intent(this, GhostWinScreen.class);
-
-        startActivityForResult(debugWin, 1);
-
-    }
-
     public void makeGuess(View view) {
 
         // retrieve the string the user want to input as guess

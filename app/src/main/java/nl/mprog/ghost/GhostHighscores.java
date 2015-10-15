@@ -48,7 +48,8 @@ public class GhostHighscores extends BaseActivity {
 
         Toast.makeText(this, losingplayer.getName(), Toast.LENGTH_LONG).show();
 
-        String sPHighscores = getPreferences(Context.MODE_PRIVATE).getString("HIGHS", "EMPTY");
+        SharedPreferences prefs = this.getSharedPreferences("settings", this.MODE_PRIVATE);
+        String sPHighscores = prefs.getString("HIGH", "EMPTY");
 
         // check if there is data in savedInstanceState
         if (savedInstanceState != null){
@@ -58,7 +59,6 @@ public class GhostHighscores extends BaseActivity {
             String json = savedInstanceState.getString("HIGH", "");
             highscore = gsonis.fromJson(json, Highscores.class);
         }
-        // check if there is anything stored in sharedpreference
         else if(!sPHighscores.equals("EMPTY")){
 
             // there were shared preferences
@@ -68,6 +68,7 @@ public class GhostHighscores extends BaseActivity {
             highscore = gsonsp.fromJson(json, Highscores.class);
 
         }
+        // check if there is anything stored in sharedpreference
         // if there was nothing saved, a new instance of highscores needs to be made
         else {
             // there were no sharedprefs.
@@ -103,13 +104,14 @@ public class GhostHighscores extends BaseActivity {
     // saves data when user kills application
     private void saveHighscores(){
 
-        SharedPreferences.Editor sPEditor = getPreferences(Context.MODE_PRIVATE).edit();
+        SharedPreferences prefs = this.getSharedPreferences("settings", this.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
 
         Gson gson = new Gson();
         String jsonhighscore = gson.toJson(highscore);
-        sPEditor.putString("HIGHS", jsonhighscore);
+        editor.putString("HIGH", jsonhighscore);
 
-        sPEditor.commit();
+        editor.commit();
 
     }
 

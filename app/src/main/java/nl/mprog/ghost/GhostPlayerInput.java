@@ -93,6 +93,10 @@ public class GhostPlayerInput extends BaseActivity {
         if (player1name.length() > 10 || player2name.length() > 10){
             Toast.makeText(this, getString(R.string.lenghtusername_toast), Toast.LENGTH_LONG).show();
         }
+        // make sure the players do not pick the same name
+        else if (Objects.equals(player1name, player2name)){
+            Toast.makeText(this, R.string.sameplayername_warningtext, Toast.LENGTH_SHORT).show();
+        }
         // else we can simply start the ingame activity to start the gameplay
         else{
             // Intent to start the next activity (ingame mode)
