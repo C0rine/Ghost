@@ -83,4 +83,18 @@ public class GhostSettings extends AppCompatActivity {
 
         startActivityForResult(openinstructions, 1);
     }
+
+
+    public void clearHighscores(View view) {
+
+        //TODO
+
+    }
+
+
+    public void startNewGame(View view) {
+
+        //TODO
+
+    }
 }

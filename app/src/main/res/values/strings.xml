@@ -47,5 +47,6 @@
     <string name="choose_dictionary">Choose dictionary</string>
     <string name="help_text">Help</string>
     <string name="lenghtusername_toast">Player name cannot be longer than 10 characters</string>
+    <string name="clearhighscore_text">Clear Highscores</string>
 
 </resources>
