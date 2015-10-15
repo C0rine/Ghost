@@ -26,16 +26,33 @@ import java.util.Objects;
 public class GhostSettings extends AppCompatActivity {
 
     private Highscores highscore;
-    //private SharedPreferences preferences;
-    //private String json;
+    private SharedPreferences prefs;
+
+    private RadioButton languagenl;
+    private RadioButton languageen;
+    private RadioButton dictionarynl;
+    private RadioButton dictionaryen;
+
+    private String languagepref;
+    private String dictionarypref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ghost_settings);
 
+        languagenl = (RadioButton) findViewById(R.id.languagepref_nl_radiobutton);
+        languageen = (RadioButton) findViewById(R.id.languagepref_en_radiobutton);
+        dictionarynl = (RadioButton) findViewById(R.id.dictionarypref_nl_radiobutton);
+        dictionaryen = (RadioButton) findViewById(R.id.dictionarypref_en_radiobutton);
+
+        // retrieve sharedpreferences
+        prefs = this.getSharedPreferences("settings", this.MODE_PRIVATE);
+
+
+        // HIGHSCORES
+
         // retrieve Highscores from sharedPreferences if there are any
-        SharedPreferences prefs = this.getSharedPreferences("settings", this.MODE_PRIVATE);
         String sPHighscores = prefs.getString("HIGH", "EMPTY");
 
         if(!sPHighscores.equals("EMPTY")){
@@ -48,7 +65,97 @@ public class GhostSettings extends AppCompatActivity {
 
         }
 
+
+
+
+        // LANGUAGE PREFERENCES
+
+        // retrieve language preference from sharedpreferences
+        String sPLanguage = prefs.getString("LANG", "NONE");
+
+        // check if there is data in savedInstanceState
+        if (savedInstanceState != null){
+            // there is something saved in savedInstanceState
+            languagepref = savedInstanceState.getString("LANG", "");
+
+            if (Objects.equals(languagepref, "NL")){
+                // check NL radiobutton
+                languagenl.setChecked(true);
+            }
+            else{
+                // the preference must be EN so check that radiobutton
+                languageen.setChecked(true);
+            }
+        }
+        // check if there are language selections in sharedpreferences
+        else if(!sPLanguage.equals("NONE")){
+            // there is a language set
+            if (sPLanguage.equals("NL")){
+                // check NL radiobutton
+                languagepref = "NL";
+                languagenl.setChecked(true);
+            }
+            else{
+                // the preference must be EN so check that radiobutton
+                languagepref = "EN";
+                languageen.setChecked(true);
+            }
+        }
+
+
+
+
+        // DICTIONARY PREFERENCES
+
+        // retrieve language preference from sharedpreferences
+        String sPDictionary = prefs.getString("DICT", "NONE");
+
+        // check if there is data in savedInstanceState
+        if (savedInstanceState != null){
+            // there is something saved in savedInstanceState
+            dictionarypref = savedInstanceState.getString("DICT", "");
+
+            if (Objects.equals(dictionarypref, "NL")){
+                // check NL radiobutton
+                dictionarynl.setChecked(true);
+            }
+            else{
+                // the preference must be EN so check that radiobutton
+                dictionaryen.setChecked(true);
+            }
+        }
+        // check if there are language selections in sharedpreferences
+        else if(!sPDictionary.equals("NONE")){
+            // there is a language set
+            if (sPDictionary.equals("NL")){
+                // check NL radiobutton
+                dictionarypref = "NL";
+                dictionarynl.setChecked(true);
+            }
+            else{
+                // the preference must be EN so check that radiobutton
+                dictionarypref = "EN";
+                dictionaryen.setChecked(true);
+            }
+        }
+
     }
+
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+
+        if(languagepref != null){
+            outState.putString("LANG", languagepref);
+        }
+
+        if(dictionarypref != null){
+            outState.putString("DICT", dictionarypref);
+        }
+
+        super.onSaveInstanceState(outState);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -75,15 +182,35 @@ public class GhostSettings extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
-
     public void goBack(View view) {
         onBackPressed();
+    }
+
+    public void langprefChosen(View view) {
+
+        boolean checked = ((RadioButton) view).isChecked();
+
+        switch (view.getId()){
+            case R.id.languagepref_nl_radiobutton:
+                if (checked){
+                    // save dictionary preference NL to sharedPreferences
+
+                    languagepref = "NL";
+
+                    Toast.makeText(this, "Language preference set to Dutch", Toast.LENGTH_SHORT).show();}
+                break;
+
+            case R.id.languagepref_en_radiobutton:
+                if (checked) {
+                    // save dictionary preference EN to sharedPreferences
+
+                    languagepref = "EN";
+
+                    Toast.makeText(this, "Language preference set to English", Toast.LENGTH_SHORT).show();
+                }
+                break;
+        }
+
     }
 
     public void dictprefChosen(View view) {
@@ -92,18 +219,30 @@ public class GhostSettings extends AppCompatActivity {
 
         switch (view.getId()){
             case R.id.dictionarypref_nl_radiobutton:
-                if (checked)
-                    //Toast.makeText(this, "dict NL chosen", Toast.LENGTH_SHORT).show();
-                    break;
+                if (checked){
+                    // save dictionary preference NL to sharedPreferences
+
+                    dictionarypref = "NL";
+
+                    Toast.makeText(this, "Dictionary preference set to Dutch", Toast.LENGTH_SHORT).show();}
+                break;
+
             case R.id.dictionarypref_en_radiobutton:
-                if (checked)
-                    // Toast.makeText(this, "dict EN chosen", Toast.LENGTH_SHORT).show();
-                    break;
+                if (checked) {
+                    // save dictionary preference EN to sharedPreferences
+
+                    dictionarypref = "EN";
+
+                    Toast.makeText(this, "Dictionary preference set to English", Toast.LENGTH_SHORT).show();
+                }
+                break;
         }
 
     }
 
     public void openInstructions(View view) {
+
+        saveSettings();
 
         Intent openinstructions = new Intent(this, GhostInstructions.class);
 
@@ -116,7 +255,7 @@ public class GhostSettings extends AppCompatActivity {
         highscore.clearScores();
 
         // save the clearing of the highscores to shared preferences
-        SharedPreferences prefs = this.getSharedPreferences("settings", this.MODE_PRIVATE);
+        prefs = this.getSharedPreferences("settings", this.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
 
         Gson gson = new Gson();
@@ -131,9 +270,33 @@ public class GhostSettings extends AppCompatActivity {
 
     public void startNewGame(View view) {
 
+        saveSettings();
+
         Intent newGameStart = new Intent(this, GhostPlayerInput.class);
 
         startActivityForResult(newGameStart, 1);
 
+    }
+
+    public void saveSettings() {
+
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("LANG", languagepref);
+        editor.putString("DICT", dictionarypref);
+        editor.commit();
+
+    }
+
+    @Override
+    protected void onStop() {
+        saveSettings();
+        super.onStop();
+    }
+
+
+    @Override
+    public void onBackPressed(){
+        saveSettings();
+        super.onBackPressed();
     }
 }

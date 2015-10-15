@@ -67,6 +67,7 @@
 
                     <RadioButton
                         android:id="@+id/languagepref_nl_radiobutton"
+                        android:onClick="langprefChosen"
                         android:layout_width="100dp"
                         android:layout_height="60dp"
                         android:layout_margin="5dp"
@@ -76,6 +77,7 @@
 
                     <RadioButton
                         android:id="@+id/languagepref_en_radiobutton"
+                        android:onClick="langprefChosen"
                         android:layout_width="100dp"
                         android:layout_height="60dp"
                         android:layout_margin="5dp"
