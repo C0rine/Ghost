@@ -6,12 +6,16 @@
 package nl.mprog.ghost;
 
 import android.app.DialogFragment;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +44,9 @@ public class GhostInGame extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ghost_in_game);
+
+        // make sure the keyboard does not automatically pop-up
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         currentfragment = (TextView) findViewById(R.id.current_fragment_text);
         guessinput = (EditText) findViewById(R.id.userinput_editText);
@@ -180,6 +187,13 @@ public class GhostInGame extends BaseActivity {
             // empty edittext
             guessinput.setText("");
 
+            // hide keyboard to keep screen clear and show who's turn it is
+            View it = this.getCurrentFocus();
+            guessinput.clearFocus();
+            if (it != null) {
+                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(it.getWindowToken(), 0);
+            }
         }
     }
 }
