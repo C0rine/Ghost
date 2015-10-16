@@ -92,15 +92,7 @@ public class Game{
     // player 1 wins: true | player 2 wins: false
     public boolean winner(){
 
-        // only makes sense when ended is true
-        //if(ended){
             return turn;
-        //}
-        //else{
-          //  Log.e("GAME", "Game did not end yet, so winner could not be decided");
-            //return false;
-        //}
-
     }
 
 }

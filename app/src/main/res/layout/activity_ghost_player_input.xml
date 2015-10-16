@@ -57,7 +57,7 @@
                     android:padding="5dp"
                     android:layout_margin="5dp" />
 
-                <EditText
+                <AutoCompleteTextView
                     android:id="@+id/player1_edittext"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
@@ -65,6 +65,7 @@
                     android:layout_alignStart="@+id/player1_text"
                     android:textColor="#ffffff"
                     android:hint="@string/player1_edittext_text"
+                    android:textColorHint="#333333"
                     android:padding="5dp"
                     android:layout_margin="5dp" />
 
@@ -99,7 +100,7 @@
                     android:padding="5dp"
                     android:layout_margin="5dp" />
 
-                <EditText
+                <AutoCompleteTextView
                     android:id="@+id/player2_edittext"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
@@ -107,6 +108,7 @@
                     android:layout_toEndOf="@+id/player2_avatarspinner"
                     android:textColor="#ffffff"
                     android:hint="@string/enter_username_text"
+                    android:textColorHint="#333333"
                     android:padding="5dp"
                     android:layout_margin="5dp" />
 

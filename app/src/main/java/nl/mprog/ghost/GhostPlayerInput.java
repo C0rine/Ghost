@@ -14,17 +14,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
+import java.util.HashMap;
 import java.util.Objects;
+import java.util.Set;
 
 public class GhostPlayerInput extends BaseActivity {
 
-    EditText player1_input;
-    EditText player2_input;
+    AutoCompleteTextView player1_input;
+    AutoCompleteTextView player2_input;
 
     RadioGroup dictionaryoptions;
     RadioButton radiobuttonnl;
@@ -34,25 +40,66 @@ public class GhostPlayerInput extends BaseActivity {
     String player2name;
     Integer selectedIdRadio;
     String dict;
+    Highscores highscore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ghost_player_input);
 
-        // make sure the keyboard does not automatically pop-up
-        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-
-        player1_input = (EditText) findViewById(R.id.player1_edittext);
-        player2_input = (EditText) findViewById(R.id.player2_edittext);
-
         dictionaryoptions = (RadioGroup) findViewById(R.id.radiogroup_dictionary);
         radiobuttonen = (RadioButton) findViewById(R.id.radiobutton_en);
         radiobuttonnl = (RadioButton) findViewById(R.id.radiobutton_nl);
 
+        player1_input = (AutoCompleteTextView) findViewById(R.id.player1_edittext);
+        player2_input = (AutoCompleteTextView) findViewById(R.id.player2_edittext);
+
+
+        // Make a string array to be used to autocomplete the edittext for username input
+        // We will get this from the highscores in sharedpreferences
+        SharedPreferences prefs = this.getSharedPreferences("settings", this.MODE_PRIVATE);
+        String sPHighscores = prefs.getString("HIGH", "EMPTY");
+        if(!sPHighscores.equals("EMPTY")){
+            // there were shared preferences
+            // load this in
+            Gson gsonsp = new Gson();
+            String json = sPHighscores;
+            highscore = gsonsp.fromJson(json, Highscores.class);
+        }
+
+        // get the highscore hashmap and retrieve its keys (playernames) in a string array
+        HashMap<String, String> map = highscore.getUnsortedMap();
+        Set<String> keys = map.keySet();
+        String[] plnames = keys.toArray(new String[keys.size()]);
+
+        // use array adapter to implement the autocomplete for username input
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, plnames);
+        player1_input.setAdapter(adapter);
+        player2_input.setAdapter(adapter);
+
+        // immediatly show previously used names on onfocus of playername input
+        // instead of having to first type two characters
+        player1_input.setOnFocusChangeListener(new View.OnFocusChangeListener(){
+            @Override
+            public void onFocusChange(View view, boolean hasFocus){
+                if(hasFocus){
+                    player1_input.showDropDown();
+                }
+            }
+        });
+        player2_input.setOnFocusChangeListener(new View.OnFocusChangeListener(){
+            @Override
+            public void onFocusChange(View view, boolean hasFocus){
+                if(hasFocus){
+                    player2_input.showDropDown();
+                }
+            }
+        });
+
+        // make sure the keyboard does not automatically pop-up
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         // retrieve prefered dictionary from sharedpreferences and check corresponding radiobutton
-        SharedPreferences prefs = this.getSharedPreferences("settings", this.MODE_PRIVATE);
         String dictpref = prefs.getString("DICT", "EN");
 
         if (Objects.equals(dictpref, "EN")){
@@ -78,7 +125,7 @@ public class GhostPlayerInput extends BaseActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+        // noinspection SimplifiableIfStatement
 
         // Gets inherited from BaseActivity
 
@@ -127,6 +174,5 @@ public class GhostPlayerInput extends BaseActivity {
 
             startActivityForResult(startPlaying, 1);
         }
-
     }
 }
