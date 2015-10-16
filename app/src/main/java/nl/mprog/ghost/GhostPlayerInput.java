@@ -6,6 +6,7 @@
 package nl.mprog.ghost;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,6 +27,8 @@ public class GhostPlayerInput extends BaseActivity {
     EditText player2_input;
 
     RadioGroup dictionaryoptions;
+    RadioButton radiobuttonnl;
+    RadioButton radiobuttonen;
 
     String player1name;
     String player2name;
@@ -44,6 +47,21 @@ public class GhostPlayerInput extends BaseActivity {
         player2_input = (EditText) findViewById(R.id.player2_edittext);
 
         dictionaryoptions = (RadioGroup) findViewById(R.id.radiogroup_dictionary);
+        radiobuttonen = (RadioButton) findViewById(R.id.radiobutton_en);
+        radiobuttonnl = (RadioButton) findViewById(R.id.radiobutton_nl);
+
+
+        // retrieve prefered dictionary from sharedpreferences and check corresponding radiobutton
+        SharedPreferences prefs = this.getSharedPreferences("settings", this.MODE_PRIVATE);
+        String dictpref = prefs.getString("DICT", "EN");
+
+        if (Objects.equals(dictpref, "EN")){
+            radiobuttonen.setChecked(true);
+        }
+        else if (Objects.equals(dictpref, "NL")){
+            radiobuttonnl.setChecked(true);
+        }
+
     }
 
     @Override

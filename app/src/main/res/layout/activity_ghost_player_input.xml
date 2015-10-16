@@ -140,7 +140,6 @@
                     <RadioButton
                         android:id="@+id/radiobutton_nl"
                         android:background="@drawable/radiobutton_nl"
-                        android:checked="true"
                         android:layout_width="100dp"
                         android:layout_height="60dp"
                         android:layout_margin="5dp"
