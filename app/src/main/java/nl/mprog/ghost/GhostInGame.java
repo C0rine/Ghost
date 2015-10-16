@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,6 +45,7 @@ public class GhostInGame extends BaseActivity {
     public EditText guessinput;
     public TextView turnindicator;
     public LinearLayout toplinearlayout;
+    public ImageView avatar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +59,7 @@ public class GhostInGame extends BaseActivity {
         guessinput = (EditText) findViewById(R.id.userinput_editText);
         turnindicator = (TextView) findViewById(R.id.playerturn_text);
         toplinearlayout = (LinearLayout) findViewById(R.id.toplinearlayout);
+        avatar = (ImageView) findViewById(R.id.char_imageView);
 
         currentfragment.setText("");
 
@@ -88,11 +91,12 @@ public class GhostInGame extends BaseActivity {
             if (game.getTurn()){
                 turnindicator.setText(player1.getName());
                 toplinearlayout.setBackgroundResource(R.drawable.user1turn_bg);
-
+                avatar.setImageResource(R.mipmap.charc_no1);
             }
             else{
                 turnindicator.setText(player2.getName());
                 toplinearlayout.setBackgroundResource(R.drawable.user2turn_bg);
+                avatar.setImageResource(R.mipmap.charc_no2);
             }
         }
         // check if there is a game in savedInstanceState
@@ -202,13 +206,16 @@ public class GhostInGame extends BaseActivity {
                 startActivityForResult(uponWin, 1);
             }
 
-            // update text to indicate who's turn it is and change background
+            // update text to indicate who's turn it is and change background and avatar
             if (game.getTurn()) {
                 turnindicator.setText(player1.getName());
                 toplinearlayout.setBackgroundResource(R.drawable.user1turn_bg);
+                avatar.setImageResource(R.mipmap.charc_no1);
+
             } else {
                 turnindicator.setText(player2.getName());
                 toplinearlayout.setBackgroundResource(R.drawable.user2turn_bg);
+                avatar.setImageResource(R.mipmap.charc_no2);
             }
 
             // empty edittext
