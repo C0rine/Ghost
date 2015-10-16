@@ -172,6 +172,12 @@ public class GhostPlayerInput extends BaseActivity {
             startPlaying.putExtra("player 2 name", player2name);
             startPlaying.putExtra("dictionary", "Dutch");
 
+            // save "NEW" in shared preferences so we know in inGame we need to create a new instance of Game class.
+            SharedPreferences prefs = this.getSharedPreferences("settings", this.MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putString("GAME", "NEW");
+            editor.commit();
+
             startActivityForResult(startPlaying, 1);
         }
     }

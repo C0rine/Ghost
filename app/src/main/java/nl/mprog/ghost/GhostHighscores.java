@@ -170,6 +170,8 @@ public class GhostHighscores extends BaseActivity {
     @Override
     public void onBackPressed() {
 
+        saveHighscores();
+
         Intent backToHome = new Intent(this, GhostMainActivity.class);
 
         startActivityForResult(backToHome, 1);
