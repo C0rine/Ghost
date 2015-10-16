@@ -30,7 +30,7 @@
     <string name="endgame_button_text">End</string>
     <string name="instructions_button">Instructies</string>
     <string name="back_button">Terug</string>
-    <string name="settings_text">Settings</string>
+    <string name="settings_text">Instellingen</string>
     <string name="namechange_button">Change</string>
     <string name="instructions_text">Instructions</string>
     <string name="latin_placeholder_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in nisl consequat, sodales nisi in, accumsan neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ullamcorper tempus enim. Nunc eleifend leo vitae arcu posuere bibendum. Cras pretium ex mi, et finibus diam dapibus eleifend. Aenean varius vestibulum malesuada. Cras maximus, eros vehicula lobortis tristique, enim lectus condimentum lectus, vitae feugiat eros velit sit amet augue. Donec volutpat ante eu metus mollis interdum. Curabitur dignissim justo ultrices felis molestie accumsan. Nunc porttitor et dolor a hendrerit.
@@ -47,7 +47,7 @@
     <string name="choose_dictionary">Choose dictionary</string>
     <string name="help_text">Help</string>
     <string name="lenghtusername_toast">Player name cannot be longer than 10 characters</string>
-    <string name="clearhighscore_text">Clear Highscores</string>
+    <string name="clearhighscore_text">Leeg Highscores</string>
     <string name="no_highscores">There is no highscore created yet</string>
     <string name="cleared_highscores">Cleared Highscores</string>
     <string name="sameplayername_warningtext">Player 1 and Player 2 cannot have the same name</string>

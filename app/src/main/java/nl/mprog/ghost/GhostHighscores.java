@@ -5,7 +5,6 @@
 
 package nl.mprog.ghost;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -45,8 +44,6 @@ public class GhostHighscores extends BaseActivity {
 
         winningplayer = gson1.fromJson(jsonwin, Player.class);
         losingplayer = gson2.fromJson(jsonlose, Player.class);
-
-        Toast.makeText(this, losingplayer.getName(), Toast.LENGTH_LONG).show();
 
         SharedPreferences prefs = this.getSharedPreferences("settings", this.MODE_PRIVATE);
         String sPHighscores = prefs.getString("HIGH", "EMPTY");

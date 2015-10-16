@@ -5,12 +5,12 @@
 
 package nl.mprog.ghost;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
+import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
+import java.util.Locale;
 import java.util.Objects;
 
 // Does not inherit from BaseActivity since the actionbar in this activity
@@ -48,7 +49,6 @@ public class GhostSettings extends AppCompatActivity {
 
         // retrieve sharedpreferences
         prefs = this.getSharedPreferences("settings", this.MODE_PRIVATE);
-
 
         // HIGHSCORES
 
@@ -283,7 +283,26 @@ public class GhostSettings extends AppCompatActivity {
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString("LANG", languagepref);
         editor.putString("DICT", dictionarypref);
+
         editor.commit();
+
+        // set locale to make sure language changes appropriately
+        if (Objects.equals(languagepref, "NL")){
+            // language preference is NL, change locale to this
+            Resources res = getApplicationContext().getResources();
+            DisplayMetrics dm = res.getDisplayMetrics();
+            android.content.res.Configuration conf = res.getConfiguration();
+            conf.locale = new Locale("nl");
+            res.updateConfiguration(conf, dm);
+        }
+        else if (Objects.equals(languagepref, "EN")){
+            // language preference is EN, change locale to this
+            Resources res = getApplicationContext().getResources();
+            DisplayMetrics dm = res.getDisplayMetrics();
+            android.content.res.Configuration conf = res.getConfiguration();
+            conf.locale = new Locale("en");
+            res.updateConfiguration(conf, dm);
+        }
 
     }
 
