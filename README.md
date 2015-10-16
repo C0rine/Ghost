@@ -4,16 +4,17 @@ Corine Jacobs
 10001326   
 Corine_J [at] MSN [dot] com   
 
-To run : simply open the project in Android Studio and run it on your own Android Device or in the emulator.  
+To run: open the project in Android Studio and run it on your own Android Device or in the emulator.  
 
 ### Summary of the project
 Ghost is a wordgame that is played by two players. The players form a word by alternating turns saying a letter, which is added on the end of the word fragment. A player loses when he/she forms a word longer than 3 letters or creates a fragment which cannot become a word by adding more letters.
    
-*(Ghost will be a native app for Android. Min. SDK: API 19, Android 4.4 (KitKat))*
+*(Ghost will be a native app for Android. Min. SDK: API 19, Android 4.4 (KitKat))*  
+*This app was tested on a Samsung SM-G361F and HTC ONE mini*
 
 ### Features
-- Write a custom username or pick a previously used one.
-- Pick a player avatar from a library.
+- Write a custom username or pick a previously used one.  
+- ~~Pick a player avatar from a library.~~ (not enough time to implement)  
 - Pick between Dutch or English dictionaries for the game.
 - Guess a letter via an on-screen keyboard.
 - Get notifications when you win/lose.
@@ -22,6 +23,13 @@ Ghost is a wordgame that is played by two players. The players form a word by al
 - Game state and preferences survive even when the app gets closed.
 
 ### Sketches of user experience
+
+Updates on UI (differences between actual app and images below):  
+- Removed special activity for settings in game. There is just one settings activity now.
+- Changed settings to also have an option to clear highscores and start a new game
+- Removed change of player name in settings 
+- Removed option to restart a game in InGame Activity (this was moved to settings)
+
 ##### All activities  
 ![AllActivities](/doc/AllActivities.jpg)
 ##### Paths  
