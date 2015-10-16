@@ -38,9 +38,10 @@
             android:id="@+id/instructions_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/latin_placeholder_text"
+            android:text="@string/instructionsfull"
             android:textSize="15sp"
-            android:background="#30ffffff" />
+            android:background="#30ffffff"
+            android:padding="15dp" />
 
     </ScrollView>
 

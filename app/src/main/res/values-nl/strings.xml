@@ -33,9 +33,6 @@
     <string name="settings_text">Instellingen</string>
     <string name="namechange_button">Verander</string>
     <string name="instructions_text">Instructies</string>
-    <string name="latin_placeholder_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in nisl consequat, sodales nisi in, accumsan neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ullamcorper tempus enim. Nunc eleifend leo vitae arcu posuere bibendum. Cras pretium ex mi, et finibus diam dapibus eleifend. Aenean varius vestibulum malesuada. Cras maximus, eros vehicula lobortis tristique, enim lectus condimentum lectus, vitae feugiat eros velit sit amet augue. Donec volutpat ante eu metus mollis interdum. Curabitur dignissim justo ultrices felis molestie accumsan. Nunc porttitor et dolor a hendrerit.
-                                            In ut tincidunt leo. Praesent vitae tempus justo. Mauris feugiat dui sed leo feugiat, et volutpat nibh ornare. Aliquam tincidunt in odio ac viverra. Praesent libero purus, iaculis id turpis vel, suscipit auctor purus. Cras orci magna, ornare ac metus nec, vestibulum aliquet arcu. Donec ultrices eu nisi non tristique. Etiam mattis vestibulum mi, ac dapibus erat pellentesque sit amet. Curabitur metus diam, laoreet quis cursus id, rhoncus eu sapien. Nulla luctus convallis consectetur. Sed vel leo nec velit aliquet tincidunt.
-                                            </string>
     <string name="noreturnallowed_toasttext">Je kunt deze knop hier nu niet gebruiken. Ga eerst verder naar de highscores.</string>
     <string name="dialog_areyousure_titletext">Zeker weten?</string>
     <string name="dialogmessage_gamewillbelost_text">Teruggaan kan inhouden dat het huidige spel verloren raakt.</string>
@@ -51,5 +48,18 @@
     <string name="no_highscores">Er zijn nog geen highscores</string>
     <string name="cleared_highscores">highscores geleegd</string>
     <string name="sameplayername_warningtext">Speler 1 en speler 2 kunnen niet dezelfde naam hebben</string>
+    <string name="instructionsfull">Spelregels van Ghost \n Twee spelers vormen een woord door om de beurt een letter te raden
+        die wordt toegevoegd aan het einde van het woordfragemenet. Het spel is op twee manieren te verliezen: \n
+        1. Het vormen van een woord dat langer is dan 3 letters (“GEL” is ok, maar “GELD” niet). \n
+        2. Het creëren van een fragment (ongeacht de lengte) wat geen woord kan worden door meer letters toe te voegen
+        (bijvoorbeeld “QZ”). \n \n
+        Het winnen van Ghost is er simpelweg voor zorgen dat je niet verliest! Een voorbeeld van een spelverloop: \n
+        - Speler 1 kiest een letter. Bijvoorbeeld, ‘G’. \n
+        - Speler 2 kiest een letter. Bijvoorbeeld, ‘E’. \n
+        - Speler 1 kiest een letter. Bijvoorbeeld, ‘L’. Speler 1 vormde het woord GEL, maar dat geeft niet omdat het niet langer is dan 3 letters. \n
+        - Speler 2 kiest een letter. Bijvoorbeeld, ‘I’. \n
+        - Speler 1 kiest een letter. Bijvoorbeeld, ‘J’. Speler 1 had ook bijvoorbeeld G kunnen kiezen, maar dan zou hij een volledig woord maken en verloren hebben.\n
+        - Speler 2 kiest een letter, Bijvoorbeeld ‘K’. Speler 2 verliest omdat GELIJK een woord is. \n \n
+        Het aantal punten dat je krijgt is gebaseerd op hoeveel letter je hebt kunnen raden voordat het spel voorbij is.</string>
 
 </resources>

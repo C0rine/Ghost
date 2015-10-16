@@ -33,9 +33,6 @@
     <string name="settings_text">Settings</string>
     <string name="namechange_button">Change</string>
     <string name="instructions_text">Instructions</string>
-    <string name="latin_placeholder_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in nisl consequat, sodales nisi in, accumsan neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ullamcorper tempus enim. Nunc eleifend leo vitae arcu posuere bibendum. Cras pretium ex mi, et finibus diam dapibus eleifend. Aenean varius vestibulum malesuada. Cras maximus, eros vehicula lobortis tristique, enim lectus condimentum lectus, vitae feugiat eros velit sit amet augue. Donec volutpat ante eu metus mollis interdum. Curabitur dignissim justo ultrices felis molestie accumsan. Nunc porttitor et dolor a hendrerit.
-                                            In ut tincidunt leo. Praesent vitae tempus justo. Mauris feugiat dui sed leo feugiat, et volutpat nibh ornare. Aliquam tincidunt in odio ac viverra. Praesent libero purus, iaculis id turpis vel, suscipit auctor purus. Cras orci magna, ornare ac metus nec, vestibulum aliquet arcu. Donec ultrices eu nisi non tristique. Etiam mattis vestibulum mi, ac dapibus erat pellentesque sit amet. Curabitur metus diam, laoreet quis cursus id, rhoncus eu sapien. Nulla luctus convallis consectetur. Sed vel leo nec velit aliquet tincidunt.
-                                            </string>
     <string name="noreturnallowed_toasttext">You cannot use this button here. Please continue to highscores first.</string>
     <string name="dialog_areyousure_titletext">Are you sure?</string>
     <string name="dialogmessage_gamewillbelost_text">Going back might cause the game state to be lost</string>
@@ -51,5 +48,19 @@
     <string name="no_highscores">There is no highscore created yet</string>
     <string name="cleared_highscores">Cleared Highscores</string>
     <string name="sameplayername_warningtext">Player 1 and Player 2 cannot have the same name</string>
+    <string name="instructionsfull">Rules of Ghost \n Players form a word by alternating turns saying a letter, which is added
+        on to the end of the word fragment. There are two ways to lose Ghost: \n
+        1. Forming a word longer than 3 letters (“PEA” is ok, but “PEAR” is not). \n
+        2. Creating a fragment (of any size) which cannot become a word by adding more
+        letters (for example, “QZ”). \n \n
+        Winning Ghost is simply not losing! So, for example, game play proceeds like this: \n
+        - Player 1 says a letter. For example, ‘P’. \n
+        - Player 2 says a letter. For example, ‘E’. \n
+        - Player 1 says a letter. For example, ‘A’. Player 1 has formed the word PEA, but that’s okay because it is not longer than 3 letters. \n
+        - Player 2 says a letter. For example, ‘F’. \n
+        - Player 1 says a letter. Player 1 must say ‘O’, because only one word starts with PEAF. If Player 1 says any other letter, for example ‘A’, he or she loses, because no word begins with PEAFA.
+        - Player 2 says a letter, which must be ‘W’. \n
+        - Player 1 says a letter, which must be ‘L’. Player 1 loses, because PEAFOWL is a word. \n \n
+        The amount of points you receive is based on how many letter you were able to guess before game over.</string>
 
 </resources>
