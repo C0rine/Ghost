@@ -17,7 +17,6 @@
     tools:context="nl.mprog.ghost.GhostInGame"
     android:background="@drawable/user1turn_bg">
 
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -65,7 +64,6 @@
 
         <ImageView
             android:id="@+id/char_imageView"
-            android:onClick="debugBackdoor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -81,6 +79,7 @@
             android:layout_gravity="center_vertical"
             android:textSize="40sp"
             android:textStyle="bold" />
+
     </LinearLayout>
 
 </LinearLayout>

@@ -16,7 +16,6 @@
     android:orientation="vertical"
     android:background="@mipmap/other_bg">
 
-
     <TextView
         android:id="@+id/highscores_text"
         android:layout_width="wrap_content"
@@ -62,6 +61,7 @@
             android:text="@string/endgame_button_text"
             android:layout_weight="1"
             android:layout_margin="5dp" />
+
     </LinearLayout>
 
 </LinearLayout>

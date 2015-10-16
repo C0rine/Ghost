@@ -3,7 +3,8 @@
      Corine_J@MSN.com
      Minor Programmeren 2015/2016 - Universiteit van Amsterdam -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,7 +15,6 @@
     android:orientation="vertical"
     tools:context="nl.mprog.ghost.GhostWinScreen"
     android:background="@drawable/user1turn_bg">
-
 
     <TextView
         android:id="@+id/playerwin_text"

@@ -3,7 +3,8 @@
      Corine_J@MSN.com
      Minor Programmeren 2015/2016 - Universiteit van Amsterdam -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,7 +15,6 @@
     android:orientation="vertical"
     tools:context="nl.mprog.ghost.GhostInstructions"
     android:background="@mipmap/other_bg">
-
 
     <TextView
         android:id="@+id/instructions_title"
@@ -41,15 +41,15 @@
             android:text="@string/latin_placeholder_text"
             android:textSize="15sp"
             android:background="#30ffffff" />
+
     </ScrollView>
 
     <Button
         android:id="@+id/back_button"
+        android:onClick="backFromInstructions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/back_button"
-        android:onClick="backFromInstructions" />
-
+        android:text="@string/back_button" />
 
 </LinearLayout>
