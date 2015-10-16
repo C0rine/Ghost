@@ -4,7 +4,7 @@
 
 ##### Description  
 
-One of two users starts a new game. Both users provide their name and choose an avatar. A dictionary to use within the game is chosen. Players form a word by alternating turns saying a letter, which is added on to the end of a word fragment. One of the users loses if they form a complete word longer than 3 letters or create a word fragment that cannot become a word by adding more letters. The winning user is displayed on the screen. Points for both users get calculated. Users are displaying within a highscore. Users get the option to play another game.  
+One of two users starts a new game. Both users provide their name and choose an avatar. A dictionary to use within the game is chosen. Players form a word by alternating turns saying a letter, which is added on to the end of a word fragment. One of the users loses if they form a complete word longer than 3 letters or create a word fragment that cannot become a word by adding more letters. The winning user is displayed on the screen. Points for both users get calculated. Users are displayed within a highscore. Users get the option to play another game.  
 
 ##### Triggers  
 -	A player starts a new game
@@ -32,9 +32,9 @@ Cases in which the system will fail or will stop processing before going through
 
 ##### Steps of execution  
 1.	User taps to start a new game
-2.	User 1 inputs name and chooses avatar
+2.	User 1 inputs name ~~and chooses avatar~~
 3.	If name of user 1 was not used before it is saved 
-4.	User 2 inputs name and chooses avatar
+4.	User 2 inputs name ~~and chooses avatar~~
 5.	If name of user 2 was not used before it is saved
 6.	Users choose language for the dictionary they want to use for the game
 7.	The users take turns creating a word fragment. Each turn:  
@@ -53,9 +53,16 @@ Cases in which the system will fail or will stop processing before going through
 
 ### Class Diagrams  
 
+Update: wordFragment is replaced by a class Lexicon which instead of a wordfragment represents a dictionary to which wordfragments are passed to be checked. 
 ![ObjectModel](ObjectModel.png)
 
 ### Consolidated sketches of each screen  
+
+Updates on UI (differences between actual app and images below):  
+- Removed special activity for settings in game. There is just one settings activity now.
+- Changed settings to also have an option to clear highscores and start a new game
+- Removed change of player name in settings 
+- Removed option to restart a game in InGame Activity (this was moved to settings)  
 
 Overview:  
 ![ConsolidatedSketches](ConsolidatedSketches.jpg)  
