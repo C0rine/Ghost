@@ -20,7 +20,7 @@ public class GhostMainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ghost_main);
 
-        Toast.makeText(this, "test pref dict", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "bg change on turn", Toast.LENGTH_SHORT).show();
     }
 
     @Override

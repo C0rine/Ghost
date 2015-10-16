@@ -39,6 +39,7 @@ public class GhostInGame extends BaseActivity {
     public TextView currentfragment;
     public EditText guessinput;
     public TextView turnindicator;
+    public LinearLayout toplinearlayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +52,7 @@ public class GhostInGame extends BaseActivity {
         currentfragment = (TextView) findViewById(R.id.current_fragment_text);
         guessinput = (EditText) findViewById(R.id.userinput_editText);
         turnindicator = (TextView) findViewById(R.id.playerturn_text);
+        toplinearlayout = (LinearLayout) findViewById(R.id.toplinearlayout);
 
         currentfragment.setText("");
 
@@ -76,11 +78,15 @@ public class GhostInGame extends BaseActivity {
 
         // get the player who gets the first turn and display this
         // the first turn gets decided at random in Game.java
+        // also set the appropriate background
         if (game.getTurn()){
             turnindicator.setText(player1.getName());
+            toplinearlayout.setBackgroundResource(R.drawable.user1turn_bg);
+
         }
         else{
             turnindicator.setText(player2.getName());
+            toplinearlayout.setBackgroundResource(R.drawable.user2turn_bg);
         }
     }
 
@@ -168,11 +174,13 @@ public class GhostInGame extends BaseActivity {
                 startActivityForResult(uponWin, 1);
             }
 
-            // update text to indicate who's turn it is
+            // update text to indicate who's turn it is and change background
             if (game.getTurn()) {
                 turnindicator.setText(player1.getName());
+                toplinearlayout.setBackgroundResource(R.drawable.user1turn_bg);
             } else {
                 turnindicator.setText(player2.getName());
+                toplinearlayout.setBackgroundResource(R.drawable.user2turn_bg);
             }
 
             // empty edittext
