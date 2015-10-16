@@ -3,32 +3,30 @@
 // Corine_J@MSN.com
 // Minor Programmeren 2015/2016 - Universiteit van Amsterdam
 
+/* Lexicon class manages the dictionary against which words are checked. Wordlist can be loaded
+   into memory, filtered on prefix and return how many words are left in a filtered list.*/
+
 package nl.mprog.ghost;
 
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Objects;
-import java.util.Scanner;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class Lexicon{
 
-    HashSet<String> fulldict;
-    HashSet<String> filtereddict;
-    String langg;
-    int count = 0;
+    private HashSet<String> fulldict;
+    private HashSet<String> filtereddict;
+    private String langg;
+    private int count = 0;
 
 
     // lexicon constructor, constructs both a fulldict and a copy of it that can/will be filtered later
@@ -51,7 +49,7 @@ public class Lexicon{
                 inputstream = am.open("dutch.txt");
             }
             else{
-                inputstream = am.open("test.txt");
+                inputstream = am.open("english.txt");
             }
 
             // read the data from the dictionary text file and put this in hashset 'fulldict'
@@ -77,12 +75,13 @@ public class Lexicon{
     }
 
 
-    // filters dictionary hashset based on prefix provided as argument
-    // all words that do not start with this prefix will be removed from filtered dictionary
+    /* filters dictionary hashset based on prefix provided as argument
+       all words that do not start with this prefix will be removed from filtered dictionary  */
     public void filter(String prefix){
 
         Log.d("READ", "Filtering...");
 
+        // iterate through the filtered dict and remove all words that do not start with the prefix
         Iterator<String> iterator = filtereddict.iterator();
         while (iterator.hasNext()){
             String word = iterator.next();
@@ -94,11 +93,17 @@ public class Lexicon{
         Log.d("READ", "Done filtering: " + filtereddict.toString());
     }
 
+    public HashSet<String> getFiltereddict(){
+
+        return filtereddict;
+
+    }
+
 
     // returns amount of items left in the hashset filtereddict
     public int count(){
         count = filtereddict.size();
-        Log.d("READ", "# words in filtered left: " + Integer.toString(count));
+        Log.d("READ", "# of words in filtered left: " + Integer.toString(count));
         return count;
     }
 
@@ -118,6 +123,7 @@ public class Lexicon{
             return null;
         }
     }
+
 
     // restore filtereddict to contain fulldict again
     public void reset(){

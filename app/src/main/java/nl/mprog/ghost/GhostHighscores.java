@@ -1,7 +1,10 @@
-// Corine Jacobs
-// 10001326
-// Corine_J@MSN.com
-// Minor Programmeren 2015/2016 - Universiteit van Amsterdam
+/* Corine Jacobs
+   10001326
+   Corine_J@MSN.com
+   Minor Programmeren 2015/2016 - Universiteit van Amsterdam */
+
+
+/* Highscores Activity */
 
 package nl.mprog.ghost;
 
@@ -13,19 +16,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 
 
 public class GhostHighscores extends BaseActivity {
 
-    public Highscores highscore;
-
+    private Highscores highscore;
     private Player winningplayer;
     private Player losingplayer;
 
-    public ListView lv;
+    private ListView lv;
 
 
     @Override
@@ -38,37 +39,38 @@ public class GhostHighscores extends BaseActivity {
         // retrieve winner
         Gson gson1 = new Gson();
         String jsonwin = recvIntent.getString("WINNER");
-        // retreive loser
+        // retrieve loser
         Gson gson2 = new Gson();
         String jsonlose = recvIntent.getString("LOSER");
 
+        // convert from String back to object
         winningplayer = gson1.fromJson(jsonwin, Player.class);
         losingplayer = gson2.fromJson(jsonlose, Player.class);
 
+        // get highscores from sharedpreferences
         SharedPreferences prefs = this.getSharedPreferences("settings", this.MODE_PRIVATE);
         String sPHighscores = prefs.getString("HIGH", "EMPTY");
 
         // check if there is data in savedInstanceState
         if (savedInstanceState != null){
-            // there is something saved in savedInstanceState
-            // load this in
+
+            // use Gson to get highscores
             Gson gsonis = new Gson();
             String json = savedInstanceState.getString("HIGH", "");
             highscore = gsonis.fromJson(json, Highscores.class);
+
         }
+        // check if there is a highscore in sharedpreferences
         else if(!sPHighscores.equals("EMPTY")){
 
-            // there were shared preferences
-            // load this in
+            // use Gson to get highscores
             Gson gsonsp = new Gson();
             String json = sPHighscores;
             highscore = gsonsp.fromJson(json, Highscores.class);
 
         }
-        // check if there is anything stored in sharedpreference
         // if there was nothing saved, a new instance of highscores needs to be made
         else {
-            // there were no sharedprefs.
             highscore = new Highscores();
         }
 
@@ -78,10 +80,8 @@ public class GhostHighscores extends BaseActivity {
 
         // get the listview
         lv = (ListView) findViewById(R.id.highscores_listView);
-
         // create adapter for listview
         ListAdapter theAdapter = new HighscoresAdapter(highscore.getSortedMap());
-
         // set adapter on listview
         lv.setAdapter(theAdapter);
 
@@ -91,6 +91,7 @@ public class GhostHighscores extends BaseActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
 
+        // save highscores in outState using Gson
         Gson gson = new Gson();
         String jsonhighscore = gson.toJson(highscore);
         outState.putString("HIGH", jsonhighscore);
@@ -103,6 +104,8 @@ public class GhostHighscores extends BaseActivity {
 
         SharedPreferences prefs = this.getSharedPreferences("settings", this.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
+
+        // saving highscores in shared preferences using Gson
 
         Gson gson = new Gson();
         String jsonhighscore = gson.toJson(highscore);
@@ -127,9 +130,8 @@ public class GhostHighscores extends BaseActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_ghost_highscores, menu);
         return true;
-
-
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -140,14 +142,14 @@ public class GhostHighscores extends BaseActivity {
 
         //noinspection SimplifiableIfStatement
 
-        // gets inherited from baseactivity
+        // gets inherited from BaseActivity.java
 
         return super.onOptionsItemSelected(item);
     }
 
 
 
-    // start new game in new activity starting again with user input
+    // start new game in new activity
     public void newGameStart(View view) {
 
         Intent newGameStart = new Intent(this, GhostPlayerInput.class);

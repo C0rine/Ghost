@@ -1,11 +1,13 @@
-// Corine Jacobs
-// 10001326
-// Corine_J@MSN.com
-// Minor Programmeren 2015/2016 - Universiteit van Amsterdam
+/* Corine Jacobs
+   10001326
+   Corine_J@MSN.com
+   Minor Programmeren 2015/2016 - Universiteit van Amsterdam  */
+
+
+/* Activity that shows the instuctions */
 
 package nl.mprog.ghost;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -46,6 +48,7 @@ public class GhostInstructions extends AppCompatActivity {
         super.onBackPressed();
     }
 
+    // gets run when the user pressed on the back-button
     public void backFromInstructions(View view) {
         onBackPressed();
     }

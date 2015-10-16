@@ -1,7 +1,9 @@
-// Corine Jacobs
-// 10001326
-// Corine_J@MSN.com
-// Minor Programmeren 2015/2016 - Universiteit van Amsterdam
+/* Corine Jacobs
+   10001326
+   Corine_J@MSN.com
+   Minor Programmeren 2015/2016 - Universiteit van Amsterdam */
+
+/* custom arrayadapter to build the listview in the highscores window from a Map */
 
 package nl.mprog.ghost;
 
@@ -13,7 +15,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Map;
 
-// custom arrayadapter to build the listview in the highscores window from a Map
 
 class HighscoresAdapter extends BaseAdapter {
 
@@ -38,7 +39,6 @@ class HighscoresAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        // TODO implement you own logic with ID
         return 0;
     }
 

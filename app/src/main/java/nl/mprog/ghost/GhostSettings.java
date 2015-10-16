@@ -1,7 +1,7 @@
-// Corine Jacobs
-// 10001326
-// Corine_J@MSN.com
-// Minor Programmeren 2015/2016 - Universiteit van Amsterdam
+/* Corine Jacobs
+   10001326
+   Corine_J@MSN.com
+   Minor Programmeren 2015/2016 - Universiteit van Amsterdam  */
 
 package nl.mprog.ghost;
 
@@ -22,8 +22,8 @@ import com.google.gson.Gson;
 import java.util.Locale;
 import java.util.Objects;
 
-// Does not inherit from BaseActivity since the actionbar in this activity
-// does not need to contain a menuitem to go to the settings.
+/* Does not inherit from BaseActivity since the actionbar in this activity
+   does not need to contain a menuitem to go to the settings  */
 public class GhostSettings extends AppCompatActivity {
 
     private Highscores highscore;
@@ -50,6 +50,7 @@ public class GhostSettings extends AppCompatActivity {
         // retrieve sharedpreferences
         prefs = this.getSharedPreferences("settings", this.MODE_PRIVATE);
 
+
         // HIGHSCORES
 
         // retrieve Highscores from sharedPreferences if there are any
@@ -64,7 +65,6 @@ public class GhostSettings extends AppCompatActivity {
             highscore = gsonsp.fromJson(json, Highscores.class);
 
         }
-
 
 
 
@@ -83,20 +83,20 @@ public class GhostSettings extends AppCompatActivity {
                 languagenl.setChecked(true);
             }
             else{
-                // the preference must be EN so check that radiobutton
+                // the preference must be EN so check EN radiobutton
                 languageen.setChecked(true);
             }
         }
         // check if there are language selections in sharedpreferences
         else if(!sPLanguage.equals("NONE")){
-            // there is a language set
+            // there is a language preference
             if (sPLanguage.equals("NL")){
                 // check NL radiobutton
                 languagepref = "NL";
                 languagenl.setChecked(true);
             }
             else{
-                // the preference must be EN so check that radiobutton
+                // the preference must be EN so check EN radiobutton
                 languagepref = "EN";
                 languageen.setChecked(true);
             }
@@ -104,10 +104,9 @@ public class GhostSettings extends AppCompatActivity {
 
 
 
-
         // DICTIONARY PREFERENCES
 
-        // retrieve language preference from sharedpreferences
+        // retrieve dictionary preference from sharedpreferences
         String sPDictionary = prefs.getString("DICT", "NONE");
 
         // check if there is data in savedInstanceState
@@ -120,13 +119,13 @@ public class GhostSettings extends AppCompatActivity {
                 dictionarynl.setChecked(true);
             }
             else{
-                // the preference must be EN so check that radiobutton
+                // the preference must be EN so check EN radiobutton
                 dictionaryen.setChecked(true);
             }
         }
-        // check if there are language selections in sharedpreferences
+        // check if there are dictionary preferences in sharedpreferences
         else if(!sPDictionary.equals("NONE")){
-            // there is a language set
+            // there is a dictionary preference set
             if (sPDictionary.equals("NL")){
                 // check NL radiobutton
                 dictionarypref = "NL";
@@ -141,14 +140,14 @@ public class GhostSettings extends AppCompatActivity {
 
     }
 
-
+    // saves data when operating system tries to kill the app/activity
     @Override
     protected void onSaveInstanceState(Bundle outState) {
 
+        // save the language and dictionary preferences to outState
         if(languagepref != null){
             outState.putString("LANG", languagepref);
         }
-
         if(dictionarypref != null){
             outState.putString("DICT", dictionarypref);
         }
@@ -163,6 +162,7 @@ public class GhostSettings extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_ghost_settings, menu);
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -182,10 +182,12 @@ public class GhostSettings extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
     public void goBack(View view) {
         onBackPressed();
     }
 
+    // gets run when either one of the language preference radiobuttons get pressed
     public void langprefChosen(View view) {
 
         boolean checked = ((RadioButton) view).isChecked();
@@ -193,19 +195,15 @@ public class GhostSettings extends AppCompatActivity {
         switch (view.getId()){
             case R.id.languagepref_nl_radiobutton:
                 if (checked){
-                    // save dictionary preference NL to sharedPreferences
-
+                    // save language preference NL to sharedPreferences
                     languagepref = "NL";
-
                     Toast.makeText(this, "Language preference set to Dutch", Toast.LENGTH_SHORT).show();}
                 break;
 
             case R.id.languagepref_en_radiobutton:
                 if (checked) {
-                    // save dictionary preference EN to sharedPreferences
-
+                    // save language preference EN to sharedPreferences
                     languagepref = "EN";
-
                     Toast.makeText(this, "Language preference set to English", Toast.LENGTH_SHORT).show();
                 }
                 break;
@@ -213,6 +211,8 @@ public class GhostSettings extends AppCompatActivity {
 
     }
 
+
+    // gets run when either one of the dictionary preference radiobuttons get pressed
     public void dictprefChosen(View view) {
 
         boolean checked = ((RadioButton) view).isChecked();
@@ -221,18 +221,14 @@ public class GhostSettings extends AppCompatActivity {
             case R.id.dictionarypref_nl_radiobutton:
                 if (checked){
                     // save dictionary preference NL to sharedPreferences
-
                     dictionarypref = "NL";
-
                     Toast.makeText(this, "Dictionary preference set to Dutch", Toast.LENGTH_SHORT).show();}
                 break;
 
             case R.id.dictionarypref_en_radiobutton:
                 if (checked) {
                     // save dictionary preference EN to sharedPreferences
-
                     dictionarypref = "EN";
-
                     Toast.makeText(this, "Dictionary preference set to English", Toast.LENGTH_SHORT).show();
                 }
                 break;
@@ -240,16 +236,16 @@ public class GhostSettings extends AppCompatActivity {
 
     }
 
+
     public void openInstructions(View view) {
 
         saveSettings();
-
         Intent openinstructions = new Intent(this, GhostInstructions.class);
-
         startActivityForResult(openinstructions, 1);
     }
 
 
+    // gets run when 'clear highscores'-button gets pressed
     public void clearHighscores(View view) {
 
         highscore.clearScores();
@@ -257,33 +253,31 @@ public class GhostSettings extends AppCompatActivity {
         // save the clearing of the highscores to shared preferences
         prefs = this.getSharedPreferences("settings", this.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-
         Gson gson = new Gson();
         String jsonhighscore = gson.toJson(highscore);
         editor.putString("HIGH", jsonhighscore);
-
         editor.commit();
 
         Toast.makeText(this, R.string.cleared_highscores, Toast.LENGTH_SHORT).show();
     }
 
 
+    // gets run 'new-game'-button gets pressed
     public void startNewGame(View view) {
 
         saveSettings();
-
         Intent newGameStart = new Intent(this, GhostPlayerInput.class);
-
         startActivityForResult(newGameStart, 1);
 
     }
 
+
     public void saveSettings() {
 
+        // save the settings to sharedpreferences
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString("LANG", languagepref);
         editor.putString("DICT", dictionarypref);
-
         editor.commit();
 
         // set locale to make sure language changes appropriately
@@ -305,6 +299,7 @@ public class GhostSettings extends AppCompatActivity {
         }
 
     }
+
 
     @Override
     protected void onStop() {

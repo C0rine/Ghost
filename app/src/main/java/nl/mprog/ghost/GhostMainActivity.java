@@ -1,12 +1,13 @@
-// Corine Jacobs
-// 10001326
-// Corine_J@MSN.com
-// Minor Programmeren 2015/2016 - Universiteit van Amsterdam
+/* Corine Jacobs
+   10001326
+   Corine_J@MSN.com
+   Minor Programmeren 2015/2016 - Universiteit van Amsterdam  */
+
+/* Main activity. The activity that standardly gets opened first when the app is started */
 
 package nl.mprog.ghost;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,8 +20,6 @@ public class GhostMainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ghost_main);
-
-        Toast.makeText(this, "nospinner", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -44,24 +43,11 @@ public class GhostMainActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    // start a new game in a new activity (starting with userinput)
+    // start GhostPlayerInput to start a new game upon clicked 'new game'-button
     public void newGameStart(View view) {
 
         Intent newGameStart = new Intent(this, GhostPlayerInput.class);
-
         startActivityForResult(newGameStart, 1);
 
-    }
-
-    // view highscores in a new activity
-    public void viewHighscores(View view) {
-
-       /* Intent viewHighscores = new Intent(this, GhostHighscores.class);
-
-        // add a sign telling GhostHighscores.java that we open the highscores without
-        // wanting to add a new player
-        viewHighscores.putExtra("SIGN", 1);
-
-        startActivityForResult(viewHighscores, 1); */
     }
 }

@@ -1,7 +1,11 @@
-// Corine Jacobs
-// 10001326
-// Corine_J@MSN.com
-// Minor Programmeren 2015/2016 - Universiteit van Amsterdam
+/* Corine Jacobs
+   10001326
+   Corine_J@MSN.com
+   Minor Programmeren 2015/2016 - Universiteit van Amsterdam */
+
+
+/* Base activity contains all information that needs to be the same
+   across (almost) all activities (e.g. the actionbarmenu). */
 
 package nl.mprog.ghost;
 
@@ -11,9 +15,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-
-// Base activity contains all information that needs to be the same
-// across (almost) all activities (e.g. the actionbarmenu).
 
 public class BaseActivity extends AppCompatActivity {
 
@@ -39,18 +40,21 @@ public class BaseActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
 
-        // open settings
+        // implement menu options:
+
+        //  1: open settings
         if (id == R.id.settings) {
             Intent openSettings = new Intent(this, GhostSettings.class);
             startActivityForResult(openSettings, 1);
+            return true;
         }
-        // open instructions
+        // 2: open instructions
         else if (id == R.id.help){
             Intent openinstructions = new Intent(this, GhostInstructions.class);
             startActivityForResult(openinstructions, 1);
             return true;
         }
-        // close app
+        // 3: close app
         else if (id == R.id.exit){
             // exit the application
             Intent exiting = new Intent(Intent.ACTION_MAIN);

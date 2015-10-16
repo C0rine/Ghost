@@ -1,7 +1,9 @@
-// Corine Jacobs
-// 10001326
-// Corine_J@MSN.com
-// Minor Programmeren 2015/2016 - Universiteit van Amsterdam
+/* Corine Jacobs
+   10001326
+   Corine_J@MSN.com
+   Minor Programmeren 2015/2016 - Universiteit van Amsterdam */
+
+/* In Game Activity, where the whole game will be played */
 
 package nl.mprog.ghost;
 
@@ -28,18 +30,15 @@ import java.util.Objects;
 
 public class GhostInGame extends BaseActivity {
 
-    public Player player1;
-    public String player1name;
+    private Player player1;
+    private String player1name;
 
-    public Player player2;
-    public String player2name;
+    private Player player2;
+    private String player2name;
 
-    public Lexicon lexicon;
-    public String dict;
-
-    public Highscores highscore;
-
-    public Game game;
+    private Lexicon lexicon;
+    private String dict;
+    private Game game;
 
     public TextView currentfragment;
     public EditText guessinput;
@@ -61,12 +60,13 @@ public class GhostInGame extends BaseActivity {
         toplinearlayout = (LinearLayout) findViewById(R.id.toplinearlayout);
         avatar = (ImageView) findViewById(R.id.char_imageView);
 
+        // game starts with a empty wordfragment
         currentfragment.setText("");
 
         SharedPreferences prefs = this.getSharedPreferences("settings", this.MODE_PRIVATE);
         String prefgame = prefs.getString("GAME", "NONE");
 
-        // check first is this game is a new game
+        // check first if this game is a new game
         if (Objects.equals(prefgame, "NEW")){
             // new game gets started via GhostPlayerInput.java so open info from intent
             Bundle recvIntent = getIntent().getExtras();
@@ -87,7 +87,7 @@ public class GhostInGame extends BaseActivity {
 
             // get the player who gets the first turn and display this
             // the first turn gets decided at random in Game.java
-            // also set the appropriate background
+            // also set the appropriate background and avatar image
             if (game.getTurn()){
                 turnindicator.setText(player1.getName());
                 toplinearlayout.setBackgroundResource(R.drawable.user1turn_bg);
@@ -115,6 +115,7 @@ public class GhostInGame extends BaseActivity {
             game = gsonsp.fromJson(json, Game.class);
         }
         else{
+            // should actually never happen
             Log.e("GAME", "Game could not be started");
         }
 
@@ -146,9 +147,7 @@ public class GhostInGame extends BaseActivity {
     public void onBackPressed(){
 
         saveGame();
-
         DialogFragment exitGameDialog = new ExitGameWarningDialog();
-
         exitGameDialog.show(getFragmentManager(), "warning");
 
     }
@@ -163,8 +162,7 @@ public class GhostInGame extends BaseActivity {
             Toast.makeText(this, "Only single alphabetical characters are allowed", Toast.LENGTH_LONG).show();
         }
         else {
-            // convert the single alphabetical input to lowercase (if this is not already the case)
-            // to make guess case-insensitive
+            // make guess case-insensitive
             toadd = toadd.toLowerCase();
 
             // add new letter to fragment and update this to the screen
@@ -172,7 +170,6 @@ public class GhostInGame extends BaseActivity {
             currentfragment.setText(newfragment);
 
             // process the guess in the game
-            // filters lexicon and changes the player turn
             game.guess(newfragment);
 
             // check if game has not ended
@@ -231,6 +228,7 @@ public class GhostInGame extends BaseActivity {
         }
     }
 
+
     // saves data when operating system tries to kill the app/activity
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -242,6 +240,7 @@ public class GhostInGame extends BaseActivity {
 
         super.onSaveInstanceState(outState);
     }
+
 
     // saves data when user kills application
     private void saveGame(){
@@ -262,7 +261,7 @@ public class GhostInGame extends BaseActivity {
     protected void onStop() {
 
         saveGame();
-
         super.onStop();
+
     }
 }

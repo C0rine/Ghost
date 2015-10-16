@@ -1,7 +1,10 @@
-// Corine Jacobs
-// 10001326
-// Corine_J@MSN.com
-// Minor Programmeren 2015/2016 - Universiteit van Amsterdam
+/* Corine Jacobs
+   10001326
+   Corine_J@MSN.com
+   Minor Programmeren 2015/2016 - Universiteit van Amsterdam */
+
+
+/* This java file contains a warning dialog used in GhostInGame.java */
 
 package nl.mprog.ghost;
 
@@ -29,7 +32,6 @@ public class ExitGameWarningDialog extends DialogFragment{
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Intent exitGame = new Intent(getActivity(), GhostPlayerInput.class);
-
                 startActivityForResult(exitGame, 1);
             }
         });

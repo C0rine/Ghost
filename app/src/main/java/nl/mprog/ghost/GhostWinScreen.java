@@ -1,7 +1,10 @@
-// Corine Jacobs
-// 10001326
-// Corine_J@MSN.com
-// Minor Programmeren 2015/2016 - Universiteit van Amsterdam
+/* Corine Jacobs
+   10001326
+   Corine_J@MSN.com
+   Minor Programmeren 2015/2016 - Universiteit van Amsterdam */
+
+/* Activity that displays the winner on the screen after the game in GhostInGame has ended
+   This activity also sends the players on to GhostHighscores, for them to be saved in highscores */
 
 package nl.mprog.ghost;
 
@@ -77,23 +80,18 @@ public class GhostWinScreen extends BaseActivity {
         Gson gson1 = new Gson();
         String jsonplayer1 = gson1.toJson(losingplayer);
         continueToHighscores.putExtra("LOSER", jsonplayer1);
-
         Gson gson2 = new Gson();
         String jsonplayer2 = gson2.toJson(winningplayer);
         continueToHighscores.putExtra("WINNER", jsonplayer2);
-
-        // add a sign telling GhostHighscores.java that we open the highscores
-        // wanting to add a new player
-        continueToHighscores.putExtra("SIGN", 2);
 
         startActivityForResult(continueToHighscores, 1);
 
     }
 
 
-    // Restrict users from using back button. We always want them to go to the highscores first
-    // and not let them go back into the gamemode or bypass having their score inserted into the
-    // highscoreslist.
+    /* Restrict users from using back button. We always want them to go to the highscores first
+       and not let them go back into the gamemode or bypass having their score inserted into the
+       highscoreslist. */
     public void onBackPressed(){
 
         Toast.makeText(this, R.string.noreturnallowed_toasttext,

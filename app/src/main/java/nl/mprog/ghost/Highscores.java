@@ -1,14 +1,14 @@
-// Corine Jacobs
-// 10001326
-// Corine_J@MSN.com
-// Minor Programmeren 2015/2016 - Universiteit van Amsterdam
+/* Corine Jacobs
+   10001326
+   Corine_J@MSN.com
+   Minor Programmeren 2015/2016 - Universiteit van Amsterdam */
+
+
+/* The highscores class creates a highscore, sorts it based in score and allows new scores to be added */
 
 package nl.mprog.ghost;
 
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -18,13 +18,7 @@ public class Highscores {
     public HashMap<String, String> highscoremap;
     public TreeMap<String, String> sortedMap;
 
-    List<String> names;
-    List<String> scores;
 
-    String[] scoresarray;
-    String[] namesarray;
-
-    // constructor
     public Highscores(){
 
         highscoremap = new HashMap<>();
@@ -32,7 +26,7 @@ public class Highscores {
     }
 
 
-    // saves player with score in highscores
+    // saves player with score in highscores map
     public void insertScore(Player player){
 
         String name = player.getName();
@@ -58,6 +52,7 @@ public class Highscores {
         return highscoremap;
 
     }
+
 
     // returns correctly ordered integer array of scores
     public Map getSortedMap(){
@@ -95,24 +90,3 @@ public class Highscores {
 
 }
 
-
-
-
-
-// used to sort highscoresmap into sortedmap
-class ValueComparator implements Comparator<String> {
-
-    Map<String, String> map;
-
-    public ValueComparator(Map<String, String> base) {
-        this.map = base;
-    }
-
-    public int compare(String a, String b) {
-        if (Integer.parseInt(map.get(a)) >= Integer.parseInt(map.get(b))) {
-            return -1;
-        } else {
-            return 1;
-        } // returning 0 would merge keys
-    }
-}
